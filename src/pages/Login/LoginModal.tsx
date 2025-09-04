@@ -26,6 +26,7 @@ import {
   switchTexts, 
   welcomeMessages 
 } from '../../services/pipelineLoginService';
+import { EyeClosedIcon, EyeOpenIcon } from '../../assets/svg/EyeIcon';
 
 interface LoginModalProps {
   isOpen: boolean;
@@ -142,6 +143,8 @@ function ErrorPopup({ message }: { message: string }) {
     </div>
   );
 }
+
+// Iconos SVG en blanco para mostrar/ocultar contraseña (centrados y bien orientados)
 
 export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
   const [isLoginForm, setIsLoginForm] = useState(true);
@@ -281,13 +284,15 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
                           transform: 'translateY(-50%)',
                           cursor: 'pointer',
                           fontSize: '18px',
-                          userSelect: 'none'
+                          userSelect: 'none',
+                          display: 'flex',
+                          alignItems: 'center'
                         }}
                         aria-label={showPassword[field.name] ? 'Ocultar contraseña' : 'Ver contraseña'}
                         tabIndex={0}
                         role="button"
                       >
-                        {showPassword[field.name] ? '🙈' : '👁️'}
+                        {showPassword[field.name] ? EyeClosedIcon : EyeOpenIcon}
                       </span>
                     )}
                   </div>
