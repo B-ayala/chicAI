@@ -14,14 +14,30 @@ import {
   ContactButton,
   MenuIcon,
   ChevronRight,
-  SubMenuText,
   ChevronIcon
 } from './styled'
 import { Link, useLocation } from 'react-router-dom'
 import { ContactIcon } from '../../../assets/svg/ContactIcon'
+import LoginModal from '../../../pages/Login/LoginModal'
+
+// Creamos un componente alternativo para SubMenuText
+const SubMenuText: React.FC<{ children: React.ReactNode }> = ({ children }) => (
+  <span style={{
+    display: 'inline-block',
+    fontSize: '0.8em',
+    color: '#E91E63', // Cambiado a rojo (color primario de la aplicación)
+    fontWeight: 500,
+    lineHeight: 1.2,
+    marginLeft: '2px',
+    verticalAlign: 'middle'
+  }}>
+    {children}
+  </span>
+)
 
 export default function NavBar() {
   const [open, setOpen] = useState(false)
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false)
   const location = useLocation()
 
   // Cierra el menú cuando cambia la ruta
@@ -32,8 +48,14 @@ export default function NavBar() {
   const handleMenuClick = () => setOpen(!open)
   const handleClose = () => setOpen(false)
 
+  const handleLoginClick = (e: React.MouseEvent) => {
+    e.preventDefault()
+    setIsLoginModalOpen(true)
+  }
+
   return (
     <NavBarContainer>
+      <LoginModal isOpen={isLoginModalOpen} onClose={() => setIsLoginModalOpen(false)} />
       <TopNavBar>
         <Brand as={Link} to="/" onClick={handleClose}>
           <BrandIcon>
@@ -53,8 +75,12 @@ export default function NavBar() {
         <MenuList>
           {menuData.filter(item => item.label !== 'Contact').map((item) => (
             <MenuItem key={item.url}>
-              <MenuLink as={Link} to={item.url}>
-                <span style={{ fontWeight: 800 }}>{item.label}</span>
+              <MenuLink 
+                as={Link} 
+                to={item.url}
+                onClick={item.label === "Login" ? handleLoginClick : undefined}
+              >
+                <span>{item.label}</span>
                 {item.Children && item.Children.length > 0 && (
                   <SubMenuText>{item.Children[0]}</SubMenuText>
                 )}
@@ -79,9 +105,9 @@ export default function NavBar() {
             <MenuLink
               as={Link}
               to={item.url}
-              onClick={handleClose}
+              onClick={item.label === "Login" ? handleLoginClick : handleClose}
             >
-              <span style={{ fontWeight: 800 }}>{item.label}</span>
+              <span>{item.label}</span>
               {item.Children && item.Children.length > 0 && (
                 <SubMenuText>{item.Children[0]}</SubMenuText>
               )}

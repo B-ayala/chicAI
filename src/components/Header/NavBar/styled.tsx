@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled, { css, createGlobalStyle } from 'styled-components';
 
 // Paleta de colores para indumentaria: rosa, negro, blanco, detalles en gris y azul suave
 const primaryColor = '#E91E63'; // Rosa Chic
@@ -7,6 +7,7 @@ const lightColor = '#fff';
 const accentColor = '#0070f3';
 const borderColor = '#ececec';
 const hoverBg = '#fce4ec';
+const blackColor = '#000000';
 
 // Breakpoints para diseño responsive
 const breakpoints = {
@@ -22,12 +23,12 @@ export const NavBarContainer = styled.header`
   top: 0;
   z-index: 100;
   box-shadow: 0 2px 12px rgba(233,30,99,0.08);
-  border-bottom: 2px solid ${primaryColor};
+  border-bottom: 2px solid ${lightColor};
+  font-family: 'Montserrat', 'Poppins', 'Quicksand', 'Nunito', 'Raleway', 'Open Sans', Arial, sans-serif;
 
   /* Elimina los puntitos de cualquier ul/li anidados */
   ul, li {
     list-style: none;
-    margin: 0;
     padding: 0;
   }
 `;
@@ -39,7 +40,7 @@ export const TopNavBar = styled.nav`
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  min-height: 70px;
+  min-height: 20px;
   position: relative;
   z-index: 10;
   
@@ -56,13 +57,14 @@ export const Brand = styled.a`
   display: flex;
   align-items: center;
   gap: 0.7rem;
-  font-size: 1.7rem;
+  font-size: 1.3rem;
   font-weight: 800;
   color: ${primaryColor};
   text-decoration: none;
   letter-spacing: 0.04em;
   text-shadow: 0 1px 0 #fff, 0 2px 8px rgba(233,30,99,0.08);
   flex-shrink: 0;
+  font-family: inherit;
 
   &:hover, &:focus {
     color: ${accentColor};
@@ -88,6 +90,7 @@ export const MenuList = styled.ul`
   padding: 0;
   width: 100%;
   align-items: center;
+  font-family: inherit;
 
   @media (min-width: ${breakpoints.mobile}) {
     display: flex;
@@ -133,15 +136,8 @@ export const MenuItem = styled.li`
 export const MenuLink = styled.a`
   text-decoration: none;
   color: ${darkColor};
-  font-weight: 600;
-  font-size: 1.08rem;
-  letter-spacing: 0.02em;
-  padding: 0.5rem 0.6rem;
-  border-radius: 8px;
-  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
   position: relative;
-  display: inline-block;
-  white-space: nowrap;
+
 
   @media (min-width: ${breakpoints.mobile}) {
     padding: 0.5rem 0.8rem;
@@ -159,8 +155,8 @@ export const MenuLink = styled.a`
   }
 
   &:hover, &:focus {
-    color: ${primaryColor};
-    background: ${hoverBg};
+    color: ${darkColor}; // Puedes cambiar a otro color si quieres, aquí se mantiene el texto rosado
+    background: ${borderColor}; // Cambia el sombreado a gris claro
     box-shadow: 0 2px 8px rgba(233,30,99,0.08);
   }
 
@@ -169,7 +165,7 @@ export const MenuLink = styled.a`
     display: block;
     width: 0;
     height: 2.5px;
-    background: ${primaryColor};
+    background: ${blackColor}; // Subrayado negro
     transition: width 0.3s;
     position: absolute;
     left: 0;
@@ -256,6 +252,7 @@ export const ContactButton = styled.a`
   box-shadow: 0 4px 12px rgba(233,30,99,0.2);
   position: relative;
   overflow: hidden;
+  font-family: inherit;
   
   &:before {
     content: '';
@@ -335,6 +332,7 @@ export const MobileMenu = styled.div<{ open: boolean }>`
     text-align: left;
     color: ${lightColor};
     transition: all 0.2s ease;
+    font-family: inherit;
     
     &:hover, &:focus {
       background: rgba(255, 255, 255, 0.1);
@@ -432,11 +430,14 @@ export const ContactIcon = () => (
   </svg>
 );
 
-export const SubMenuText = styled.span`
-  display: block;
+export const SubMenuText = styled.small`
+  display: inline-block;
   font-size: 0.8em;
-  color: #888;
-  font-weight: 400;
+  color: #929693ff;
+  font-weight: 500;
+  line-height: 1.2;
+  margin-left: 2px;
+  vertical-align: middle;
 `;
 
 export const ChevronIcon = styled.span`
