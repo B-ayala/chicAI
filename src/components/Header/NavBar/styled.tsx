@@ -16,11 +16,29 @@ const breakpoints = {
   desktop: '1200px'
 };
 
+export const GlobalNavStyles = createGlobalStyle`
+  /* reset mínimo para evitar desbordes horizontales */
+  html, body, #root {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden;
+    box-sizing: border-box;
+  }
+
+  *, *::before, *::after {
+    box-sizing: inherit;
+  }
+`;
+
 export const NavBarContainer = styled.header`
+  max-width: 100%;
   width: 100%;
+  overflow-x: hidden; /* prevención extra por si algún hijo genera desborde */
   background: ${lightColor};
   position: sticky;
   top: 0;
+  left: 0;
   z-index: 100;
   box-shadow: 0 2px 12px rgba(233,30,99,0.08);
   border-bottom: 2px solid ${lightColor};
