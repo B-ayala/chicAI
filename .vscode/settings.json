@@ -1,0 +1,31 @@
+{
+  // Formatear con Prettier al guardar
+  "editor.formatOnSave": true,
+
+  // Ejecutar fixes de ESLint al guardar
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true,
+    "source.organizeImports": true
+  },
+
+  // Usar Prettier como formateador por defecto para los lenguajes relevantes
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  // Asegurar que ESLint valide estos lenguajes
+  "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
+
+  // Opcional: si quieres que Prettier respete solo configs locales, cámbialo a true
+  "prettier.requireConfig": false
+}

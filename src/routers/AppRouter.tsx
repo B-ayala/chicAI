@@ -10,6 +10,7 @@ const AppRouter: React.FC = () => {
                 <Route element={<ProtectedRoute />}>
                     <Route path="/" element={<Home />} />
                     <Route path="/products" element={<Products />} />
+
                 </Route>
             </Routes>
         </>
