@@ -1,4 +1,4 @@
-import styled, { css, createGlobalStyle } from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
 
 // Paleta de colores para indumentaria: rosa, negro, blanco, detalles en gris y azul suave
 const primaryColor = '#E91E63'; // Rosa Chic
@@ -77,7 +77,7 @@ export const Brand = styled.a`
   gap: 0.7rem;
   font-size: 1.3rem;
   font-weight: 800;
-  color: ${primaryColor};
+  color: ${blackColor};
   text-decoration: none;
   letter-spacing: 0.04em;
   text-shadow: 0 1px 0 #fff, 0 2px 8px rgba(233,30,99,0.08);
@@ -258,7 +258,7 @@ export const ContactButton = styled.a`
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background-color: ${primaryColor};
+  background-color: ${blackColor};
   color: ${lightColor};
   font-weight: 600;
   font-size: 0.95rem;
@@ -451,7 +451,7 @@ export const ContactIcon = () => (
 export const SubMenuText = styled.small`
   display: inline-block;
   font-size: 0.8em;
-  color: #929693ff;
+  color: ${primaryColor};
   font-weight: 500;
   line-height: 1.2;
   margin-left: 2px;
