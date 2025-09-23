@@ -1,25 +1,26 @@
-import React, { useState, useEffect } from 'react'
-import menuData from './MenuData/MenuData'
-import {
-  MenuItem,
-  MenuLink,
-  MenuList,
-  NavBarContainer,
-  TopNavBar,
-  Brand,
-  BrandIcon,
-  Hamburger,
-  MobileMenu,
-  Overlay,
-  ContactButton,
-  MenuIcon,
-  ChevronRight,
-  ChevronIcon
-} from './styled'
+import { Button } from '@mui/material'
+import React, { useEffect, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { ContactIcon } from '../../../assets/svg/ContactIcon'
 import LoginModal from '../../../pages/Login/LoginModal'
-import { Button } from '@mui/material'
+import Search from '../Search/Search'
+import menuData from './MenuData/MenuData'
+import {
+  Brand,
+  BrandIcon,
+  ChevronIcon,
+  ChevronRight,
+  ContactButton,
+  Hamburger,
+  MenuIcon,
+  MenuItem,
+  MenuLink,
+  MenuList,
+  MobileMenu,
+  NavBarContainer,
+  Overlay,
+  TopNavBar
+} from './styled'
 
 // Creamos un componente alternativo para SubMenuText
 const SubMenuText: React.FC<{ children: React.ReactNode }> = ({ children }) => (
@@ -76,6 +77,7 @@ export default function NavBar() {
         <MenuList>
           {menuData.filter(item => item.label !== 'Contact').map((item) => (
             <MenuItem key={item.url}>
+              
               <MenuLink 
                 as={Link} 
                 to={item.url}
@@ -96,11 +98,14 @@ export default function NavBar() {
               Contacto
             </ContactButton>
           </MenuItem>
+          <Search ancho={400} formType='outlined' margen={40} closeMenu={setOpen}/>
         </MenuList>
+        
       </TopNavBar>
       <Overlay open={open} onClick={handleClose} />
   {/*     vista mobile */}
       <MobileMenu open={open}>
+        <Search ancho={250} formType='filled' margen={0} closeMenu={setOpen}/>
         {menuData.filter(item => item.label !== 'Contact').map((item) => (
           <MenuItem key={item.url}>
             <MenuLink

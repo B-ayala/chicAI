@@ -1,4 +1,4 @@
-import styled, { css, createGlobalStyle } from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
 
 // Paleta de colores para indumentaria: rosa, negro, blanco, detalles en gris y azul suave
 const primaryColor = '#E91E63'; // Rosa Chic
@@ -34,7 +34,7 @@ export const GlobalNavStyles = createGlobalStyle`
 export const NavBarContainer = styled.header`
   max-width: 100%;
   width: 100%;
-  overflow-x: hidden; /* prevención extra por si algún hijo genera desborde */
+   /* prevención extra por si algún hijo genera desborde */
   background: ${lightColor};
   position: sticky;
   top: 0;
