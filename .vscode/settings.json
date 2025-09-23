@@ -4,8 +4,8 @@
 
   // Ejecutar fixes de ESLint al guardar
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true,
-    "source.organizeImports": true
+    "source.fixAll.eslint": "explicit",
+    "source.organizeImports": "explicit"
   },
 
   // Usar Prettier como formateador por defecto para los lenguajes relevantes
