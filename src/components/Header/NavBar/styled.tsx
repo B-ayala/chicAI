@@ -34,7 +34,7 @@ export const GlobalNavStyles = createGlobalStyle`
 export const NavBarContainer = styled.header`
   max-width: 100%;
   width: 100%;
-  overflow-x: hidden; /* prevención extra por si algún hijo genera desborde */
+   /* prevención extra por si algún hijo genera desborde */
   background: ${lightColor};
   position: sticky;
   top: 0;

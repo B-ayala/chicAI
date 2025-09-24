@@ -1,7 +1,18 @@
 import { Box, Card, CardContent, CardMedia, Container, Typography } from '@mui/material';
-import { featuredProducts } from './mockData';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../../store';
+
 
 export default function Products() {
+  
+    const dispatch = useDispatch()
+
+    const listProducts = useSelector((state:RootState)=>state.product.value)
+    const list = listProducts["0"]
+    const listModificada = Object.values(list);//devuelve array de objetos
+
+
+
   return (
     <>
       <Container maxWidth="lg" sx={{ py: 8 }}>
@@ -20,7 +31,7 @@ export default function Products() {
             },
           }}
         >
-          {featuredProducts.map((product) => (
+          {listModificada.map((product) => (
             <Box key={product.id}>
               <Card
                 elevation={0}

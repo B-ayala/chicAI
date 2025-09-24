@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom";
-import ProtectedRoute from "./ProtectedRoute";
 import Home from "../pages/Home/Home";
 import Products from "../pages/Products";
+import ProtectedRoute from "./ProtectedRoute";
 
 const AppRouter: React.FC = () => {
     return (
