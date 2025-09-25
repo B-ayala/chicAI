@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/chicAI/static/css/main.e6c13ad2.css",
-    "main.js": "/chicAI/static/js/main.a171ab65.js",
+    "main.js": "/chicAI/static/js/main.4cafd08b.js",
     "static/js/453.d04e4ffa.chunk.js": "/chicAI/static/js/453.d04e4ffa.chunk.js",
     "static/media/fashion-accessories-and-clothing-laid-out-aestheti.jpg": "/chicAI/static/media/fashion-accessories-and-clothing-laid-out-aestheti.171092afbf7f46f27a62.jpg",
     "static/media/classic-denim-jacket-on-white-background.jpg": "/chicAI/static/media/classic-denim-jacket-on-white-background.7e85ac26bb977b7a22a5.jpg",
@@ -14,11 +14,11 @@
     "static/media/modern-white-sneakers-product-shot.jpg": "/chicAI/static/media/modern-white-sneakers-product-shot.80885cf2927b8887c8f2.jpg",
     "index.html": "/chicAI/index.html",
     "main.e6c13ad2.css.map": "/chicAI/static/css/main.e6c13ad2.css.map",
-    "main.a171ab65.js.map": "/chicAI/static/js/main.a171ab65.js.map",
+    "main.4cafd08b.js.map": "/chicAI/static/js/main.4cafd08b.js.map",
     "453.d04e4ffa.chunk.js.map": "/chicAI/static/js/453.d04e4ffa.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e6c13ad2.css",
-    "static/js/main.a171ab65.js"
+    "static/js/main.4cafd08b.js"
   ]
 }
