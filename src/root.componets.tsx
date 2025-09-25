@@ -9,7 +9,7 @@ const Root: React.FC = () => {
     return (
         
         <ThemeProvider theme={theme} >
-            <HashRouter>
+            <HashRouter basename="/chicAI">
                 <AppRouter />
             </HashRouter>
         </ThemeProvider>
