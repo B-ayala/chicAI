@@ -3,17 +3,13 @@ import { HashRouter } from "react-router-dom";
 import AppRouter from "./routers/AppRouter";
 import theme from "./theme";
 
-// Determinar si estamos en producción o desarrollo
-const isProduction = window.location.hostname !== 'localhost' && 
-                    window.location.hostname !== '127.0.0.1';
-
-// Usar basename solo en producción (GitHub Pages)
-const baseName = isProduction ? '/chicAI' : '';
+// HashRouter no necesita basename para GitHub Pages
+// ya que usa fragmentos de URL (#) en lugar de rutas reales
 
 const Root: React.FC = () => {
     return (
         <ThemeProvider theme={theme} >
-            <HashRouter basename={baseName}>
+            <HashRouter>
                 <AppRouter />
             </HashRouter>
         </ThemeProvider>
