@@ -1,7 +1,7 @@
 import { ArrowBackIos, ArrowForwardIos } from '@mui/icons-material';
-import { Box, IconButton } from '@mui/material';
-import { carouselImages } from '../../Products/mockData';
+import { Box, Button, IconButton, Typography } from '@mui/material';
 import { useEffect, useState } from 'react';
+import { carouselImages } from '../../Products/mockData';
 
 export const HomeCarousel = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -9,9 +9,9 @@ export const HomeCarousel = () => {
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % carouselImages.length);
-    }, 10000);
+    }, 7000);
     return () => clearInterval(timer);
-  }, []);
+  }, [carouselImages.length]);
 
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev + 1) % carouselImages.length);
@@ -20,125 +20,184 @@ export const HomeCarousel = () => {
   const prevSlide = () => {
     setCurrentSlide((prev) => (prev - 1 + carouselImages.length) % carouselImages.length);
   };
+
   return (
-    <div>
-      <Box sx={{ position: 'relative', height: '100vh', overflow: 'hidden' }}>
-        {carouselImages.map((image, index) => (
+    <Box
+      sx={{
+        position: 'relative',
+        height: { xs: '60vh', sm: '70vh', md: '80vh' },
+        width: '100vw',
+        maxWidth: '100%',
+        overflow: 'hidden',
+        borderRadius: { xs: 0, md: 4 },
+        boxShadow: { xs: 'none', md: 4 },
+      }}
+      role="region"
+      aria-label="Carrusel de productos"
+    >
+      {carouselImages.map((image, index) => (
+        <Box
+          key={index}
+          sx={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            opacity: currentSlide === index ? 1 : 0,
+            zIndex: currentSlide === index ? 2 : 1,
+            transition: 'opacity 1s cubic-bezier(0.4,0,0.2,1)',
+            backgroundImage: `url(${image.url})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
           <Box
-            key={index}
             sx={{
-              position: 'absolute',
-              top: 0,
-              left: 0,
               width: '100%',
               height: '100%',
-              opacity: currentSlide === index ? 1 : 0,
-              transition: 'opacity 0.8s ease-in-out',
-              backgroundImage: `url(${image.url})`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
+              background:
+                'linear-gradient(90deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.2) 60%, rgba(0,0,0,0.0) 100%)',
               display: 'flex',
               alignItems: 'center',
-              justifyContent: 'center',
+              justifyContent: { xs: 'center', md: 'flex-start' },
+              px: { xs: 2, md: 8 },
             }}
           >
-            {/* <Box
-                      sx={{
-                        textAlign: 'center',
-                        color: 'white',
-                        backgroundColor: 'rgba(0, 0, 0, 0.4)',
-                        padding: 4,
-                        borderRadius: 2,
-                        backdropFilter: 'blur(5px)',
-                      }}
-                    >
-                      <Typography
-                        variant="h1"
-                        gutterBottom
-                        sx={{ textShadow: '2px 2px 4px rgba(0,0,0,0.5)' }}
-                      >
-                        {image.title}
-                      </Typography>
-                      <Typography
-                        variant="h5"
-                        gutterBottom
-                        sx={{ mb: 3, textShadow: '1px 1px 2px rgba(0,0,0,0.5)' }}
-                      >
-                        {image.subtitle}
-                      </Typography>
-                      <Button
-                        variant="contained"
-                        size="large"
-                        sx={{
-                          px: 4,
-                          py: 1.5,
-                          fontSize: '1.1rem',
-                          backgroundColor: 'primary.main',
-                          '&:hover': {
-                            backgroundColor: 'secondary.main',
-                          },
-                        }}
-                      >
-                        Comprar Ahora
-                      </Button>
-                    </Box> */}
-          </Box>
-        ))}
-
-        <IconButton
-          onClick={prevSlide}
-          sx={{
-            position: 'absolute',
-            left: 20,
-            top: '50%',
-            transform: 'translateY(-50%)',
-            backgroundColor: 'rgba(255, 255, 255, 0.8)',
-            '&:hover': { backgroundColor: 'rgba(255, 255, 255, 0.9)' },
-          }}
-        >
-          <ArrowBackIos />
-        </IconButton>
-
-        <IconButton
-          onClick={nextSlide}
-          sx={{
-            position: 'absolute',
-            right: 20,
-            top: '50%',
-            transform: 'translateY(-50%)',
-            backgroundColor: 'rgba(255, 255, 255, 0.8)',
-            '&:hover': { backgroundColor: 'rgba(255, 255, 255, 0.9)' },
-          }}
-        >
-          <ArrowForwardIos />
-        </IconButton>
-
-        <Box
-          sx={{
-            position: 'absolute',
-            bottom: 30,
-            left: '50%',
-            transform: 'translateX(-50%)',
-            display: 'flex',
-            gap: 1,
-          }}
-        >
-          {carouselImages.map((_, index) => (
             <Box
-              key={index}
-              onClick={() => setCurrentSlide(index)}
               sx={{
-                width: 12,
-                height: 12,
-                borderRadius: '50%',
-                backgroundColor: currentSlide === index ? 'white' : 'rgba(255, 255, 255, 0.5)',
-                cursor: 'pointer',
-                transition: 'all 0.3s ease',
+                color: 'white',
+                maxWidth: { xs: '90%', md: '40%' },
+                textAlign: { xs: 'center', md: 'left' },
+                p: { xs: 2, md: 4 },
+                borderRadius: 3,
+                backdropFilter: 'blur(4px)',
+                backgroundColor: 'rgba(0,0,0,0.3)',
+                boxShadow: 2,
               }}
-            />
-          ))}
+            >
+              <Typography
+                variant="h3"
+                component="h2"
+                gutterBottom
+                sx={{
+                  fontWeight: 700,
+                  textShadow: '2px 2px 8px rgba(0,0,0,0.5)',
+                  mb: 2,
+                }}
+              >
+                {image.title}
+              </Typography>
+              <Typography
+                variant="h6"
+                gutterBottom
+                sx={{
+                  mb: 3,
+                  textShadow: '1px 1px 4px rgba(0,0,0,0.4)',
+                  fontWeight: 400,
+                }}
+              >
+                {image.subtitle}
+              </Typography>
+              <Button
+                variant="contained"
+                size="large"
+                sx={{
+                  px: 4,
+                  py: 1.5,
+                  fontSize: '1.1rem',
+                  backgroundColor: 'primary.main',
+                  boxShadow: 3,
+                  borderRadius: 2,
+                  '&:hover': {
+                    backgroundColor: 'secondary.main',
+                  },
+                }}
+                aria-label="Comprar ahora"
+              >
+                Comprar Ahora
+              </Button>
+            </Box>
+          </Box>
         </Box>
+      ))}
+
+      <IconButton
+        onClick={prevSlide}
+        aria-label="Anterior"
+        sx={{
+          position: 'absolute',
+          left: { xs: 10, sm: 32 },
+          top: '50%',
+          transform: 'translateY(-50%)',
+          backgroundColor: 'rgba(255,255,255,0.85)',
+          boxShadow: 2,
+          '&:hover': { backgroundColor: 'rgba(255,255,255,1)' },
+          width: { xs: 40, sm: 48 },
+          height: { xs: 40, sm: 48 },
+          zIndex: 10,
+        }}
+      >
+        <ArrowBackIos fontSize="large" />
+      </IconButton>
+
+      <IconButton
+        onClick={nextSlide}
+        aria-label="Siguiente"
+        sx={{
+          position: 'absolute',
+          right: { xs: 10, sm: 32 },
+          top: '50%',
+          transform: 'translateY(-50%)',
+          backgroundColor: 'rgba(255,255,255,0.85)',
+          boxShadow: 2,
+          '&:hover': { backgroundColor: 'rgba(255,255,255,1)' },
+          width: { xs: 40, sm: 48 },
+          height: { xs: 40, sm: 48 },
+          zIndex: 10,
+        }}
+      >
+        <ArrowForwardIos fontSize="large" />
+      </IconButton>
+
+      <Box
+        sx={{
+          position: 'absolute',
+          bottom: { xs: 18, sm: 28, md: 38 },
+          left: '50%',
+          transform: 'translateX(-50%)',
+          display: 'flex',
+          gap: { xs: 1, sm: 2 },
+          zIndex: 10,
+        }}
+        role="tablist"
+        aria-label="Indicadores de carrusel"
+      >
+        {carouselImages.map((_, index) => (
+          <Box
+            key={index}
+            onClick={() => setCurrentSlide(index)}
+            role="tab"
+            aria-selected={currentSlide === index}
+            aria-label={`Ir al slide ${index + 1}`}
+            tabIndex={0}
+            sx={{
+              width: { xs: 12, sm: 16, md: 20 },
+              height: { xs: 12, sm: 16, md: 20 },
+              borderRadius: '50%',
+              backgroundColor: currentSlide === index ? 'primary.main' : 'rgba(255,255,255,0.6)',
+              border: currentSlide === index ? '2px solid white' : 'none',
+              boxShadow: currentSlide === index ? 3 : 1,
+              cursor: 'pointer',
+              transition: 'all 0.3s cubic-bezier(0.4,0,0.2,1)',
+              outline: 'none',
+            }}
+          />
+        ))}
       </Box>
-    </div>
+    </Box>
   );
 };
