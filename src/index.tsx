@@ -1,18 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { GlobalNavStyles } from './components/Header/NavBar/styled';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import Root from './root.componets';
-import { GlobalNavStyles } from './components/Header/NavBar/styled';
 
-
-const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
-);
+const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
   <React.StrictMode>
-        <GlobalNavStyles />
-
+    <GlobalNavStyles />
     <Root />
   </React.StrictMode>
 );
