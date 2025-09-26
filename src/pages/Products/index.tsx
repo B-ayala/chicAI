@@ -1,17 +1,14 @@
-import { Box, Card, CardContent, CardMedia, Container, Typography } from '@mui/material';
+import { Card, CardContent, CardMedia, Container, Typography } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../store';
-
+import { ProductCard, ProductsGrid } from './styled';
 
 export default function Products() {
-  
-    const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
-    const listProducts = useSelector((state:RootState)=>state.product.value)
-    const list = listProducts["0"]
-    const listModificada = Object.values(list);//devuelve array de objetos
-
-
+  const listProducts = useSelector((state: RootState) => state.product.value);
+  const list = listProducts['0'];
+  const listModificada = Object.values(list); //devuelve array de objetos
 
   return (
     <>
@@ -20,29 +17,16 @@ export default function Products() {
           Productos Destacados
         </Typography>
 
-        <Box
-          sx={{
-            display: 'grid',
-            gap: 4,
-            gridTemplateColumns: {
-              xs: 'repeat(1, 1fr)',
-              sm: 'repeat(2, 1fr)',
-              md: 'repeat(3, 1fr)',
-            },
-          }}
-        >
+        <ProductsGrid>
           {listModificada.map((product) => (
-            <Box key={product.id}>
+            <ProductCard key={product.id}>
               <Card
                 elevation={0}
                 sx={{
                   height: '100%',
                   boxShadow: 'none',
-                  transition: 'transform 0.3s ease',
-                  '&:hover': {
-                    transform: 'translateY(-8px)',
-                    boxShadow: 'none',
-                  },
+                  // El zoom se maneja en ProductCard
+                  transition: 'none',
                 }}
               >
                 <CardMedia
@@ -55,7 +39,11 @@ export default function Products() {
                   <Typography gutterBottom variant="h6" component="div" sx={{ fontWeight: 600 }}>
                     {product.name}
                   </Typography>
-                  <Typography variant="h6" color="primary.main" sx={{ fontWeight: 400, fontSize: '1rem' }}>
+                  <Typography
+                    variant="h6"
+                    color="primary.main"
+                    sx={{ fontWeight: 400, fontSize: '1rem' }}
+                  >
                     {product.price}
                   </Typography>
                   {/* <Typography variant="body2" color="text.secondary" gutterBottom>
@@ -83,9 +71,9 @@ export default function Products() {
                   </Box> */}
                 </CardContent>
               </Card>
-            </Box>
+            </ProductCard>
           ))}
-        </Box>
+        </ProductsGrid>
       </Container>
     </>
   );

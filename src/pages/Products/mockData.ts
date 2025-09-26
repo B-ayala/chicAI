@@ -1,3 +1,7 @@
+import primavera from '../../assets/img/modelo/primavera.jpg';
+import modlea from '../../assets/img/modelo/sacorojo.jpg';
+import getty from '../../assets/img/modelo/sacos.jpg';
+
 declare const require: any;
 const req = require.context('../../assets/img/example', false, /\.(png|jpe?g|webp|svg)$/);
 
@@ -13,23 +17,17 @@ export const imagesMap: Record<string, string> = req
 
 export const carouselImages = [
   {
-    url:
-      imagesMap['elegant-woman-in-modern-casual-wear-standing-in-mi.jpg'] ||
-      '/elegant-woman-in-modern-casual-wear-standing-in-mi.jpg',
+    url: modlea,
     title: 'Nueva Colección Primavera',
     subtitle: 'Descubre los últimos estilos',
   },
   {
-    url:
-      imagesMap['stylish-man-in-contemporary-streetwear-against-urb.jpg'] ||
-      '/stylish-man-in-contemporary-streetwear-against-urb.jpg',
+    url: getty, // Using zapatose as fallback since "zapatos" doesn't exist
     title: 'Moda Urbana',
     subtitle: 'Estilo para cada ocasión',
   },
   {
-    url:
-      imagesMap['fashion-accessories-and-clothing-laid-out-aestheti.jpg'] ||
-      '/fashion-accessories-and-clothing-laid-out-aestheti.jpg',
+    url: primavera,
     title: 'Accesorios Exclusivos',
     subtitle: 'Completa tu look perfecto',
   },
