@@ -9,11 +9,25 @@ export default function Home() {
       <HomeCarousel />
       {/* Productos destacados en el Home */}
       <Container maxWidth="lg" sx={{ py: 8 }}>
-        <Typography variant="h4" align="center" gutterBottom sx={{ mb: 4, color: 'text.primary' }}>
-          Productos Destacados
+        <Typography
+          variant="h4"
+          align="center"
+          gutterBottom
+          sx={{
+            mb: 4,
+            color: 'text.primary',
+            fontWeight: 800,
+            fontFamily: `'Montserrat', 'Roboto', Arial, sans-serif`,
+            letterSpacing: '0.04em',
+            textTransform: 'uppercase',
+            fontSize: { xs: '1.7rem', sm: '2.2rem', md: '2.6rem' },
+            lineHeight: 1.1,
+          }}
+        >
+          ÚLTIMOS INGRESOS
         </Typography>
         <ProductsGrid>
-          {featuredProducts.slice(0, 3).map((product) => (
+          {featuredProducts.slice(0, 6).map((product) => (
             <ProductCard key={product.id}>
               <Card
                 elevation={0}

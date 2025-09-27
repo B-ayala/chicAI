@@ -1,7 +1,7 @@
 import styled, { keyframes } from 'styled-components';
 
 // Color bordo/burdeos intenso
-const burgundy = '#800020';
+const burgundy = '#201f1fff';
 
 const marqueeAnim = keyframes`
   0% {
@@ -45,4 +45,3 @@ export const MarqueeText = styled.span`
     font-size: 1.2rem;
   }
 `;
-

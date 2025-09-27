@@ -1,5 +1,7 @@
+import modlea from '../../assets/img/carru.png';
+import camisa from '../../assets/img/modelo/camisa-roja.png';
+import camisaRosa from '../../assets/img/modelo/camisa-rosa.png';
 import primavera from '../../assets/img/modelo/primavera.jpg';
-import modlea from '../../assets/img/modelo/sacorojo.jpg';
 import getty from '../../assets/img/modelo/sacos.jpg';
 
 declare const require: any;
@@ -18,7 +20,6 @@ export const imagesMap: Record<string, string> = req
 export const carouselImages = [
   {
     url: modlea,
-    title: 'Nueva Colección Primavera',
     subtitle: 'Descubre los últimos estilos',
   },
   {
@@ -38,25 +39,21 @@ export const featuredProducts = [
     id: 1,
     name: 'Chaqueta Denim Clásica',
     price: '$89.99',
-    image:
-      imagesMap['classic-denim-jacket-on-white-background.jpg'] ||
-      '/classic-denim-jacket-on-white-background.jpg',
+    image: camisa, // was url: camisa
     category: 'Chaquetas',
   },
   {
     id: 2,
-    name: 'Vestido Floral Elegante',
+    name: 'saco jean',
     price: '$129.99',
-    image: imagesMap['elegant-floral-dress-on-hanger.jpg'] || '/elegant-floral-dress-on-hanger.jpg',
+    image: primavera, // was url: camisaRoja
     category: 'Vestidos',
   },
   {
     id: 3,
-    name: 'Sneakers Deportivos',
+    name: 'Camisola bordo',
     price: '$159.99',
-    image:
-      imagesMap['modern-white-sneakers-product-shot.jpg'] ||
-      '/modern-white-sneakers-product-shot.jpg',
+    image: camisaRosa, // was url: camisaRosa
     category: 'Calzado',
   },
   {
