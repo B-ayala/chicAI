@@ -31,7 +31,7 @@ export default function Products() {
               >
                 <CardMedia
                   component="img"
-                  image={product.image}
+                  image={product.image} // ensure this is .image, not .url
                   alt={product.name}
                   sx={{ height: { xs: 260, sm: 320, md: 490 }, objectFit: 'cover' }}
                 />
