@@ -33,7 +33,7 @@ export default function Products() {
                   component="img"
                   image={product.image}
                   alt={product.name}
-                  sx={{ height: { xs: 260, sm: 320, md: 490 }, objectFit: 'cover' }}
+                  sx={{ height: { xs: 260, sm: 320, md: 530 }, objectFit: 'cover'}}
                 />
                 <CardContent>
                   <Typography gutterBottom variant="h6" component="div" sx={{ fontWeight: 600 }}>

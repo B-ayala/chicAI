@@ -8,7 +8,7 @@ export default function Home() {
     <div>
       <HomeCarousel />
       {/* Productos destacados en el Home */}
-      <Container maxWidth="lg" sx={{ py: 8 }}>
+      <Container maxWidth="lg" sx={{ py: 2 }}>
         <Typography variant="h4" align="center" gutterBottom sx={{ mb: 4, color: 'text.primary' }}>
           Productos Destacados
         </Typography>
@@ -17,17 +17,19 @@ export default function Home() {
             <ProductCard key={product.id}>
               <Card
                 elevation={0}
+
                 sx={{
                   height: '100%',
                   boxShadow: 'none',
                   transition: 'none',
                 }}
+                
               >
                 <CardMedia
                   component="img"
                   image={product.image}
                   alt={product.name}
-                  sx={{ height: { xs: 220, sm: 260, md: 320 }, objectFit: 'cover' }}
+                  sx={{ height: { xs: 220, sm: 260, md: 500 }, objectFit: 'cover' }}
                 />
                 <CardContent>
                   <Typography gutterBottom variant="h6" component="div" sx={{ fontWeight: 600 }}>

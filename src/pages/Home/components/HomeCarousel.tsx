@@ -25,7 +25,7 @@ export const HomeCarousel = () => {
     <Box
       sx={{
         position: 'relative',
-        height: { xs: '60vh', sm: '70vh', md: '80vh' },
+        height: { xs: '60vh', sm: '70vh', md: '89vh' },
         width: '100vw',
         maxWidth: '100%',
         overflow: 'hidden',
