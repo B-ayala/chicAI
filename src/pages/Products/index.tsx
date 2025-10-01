@@ -1,7 +1,8 @@
-import { Card, CardContent, CardMedia, Container, Typography } from '@mui/material';
+import { Container, Typography } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
+import Product from '../../components/Product/Product';
 import { RootState } from '../../store';
-import { ProductCard, ProductsGrid } from './styled';
+import { ProductsGrid } from './styled';
 
 export default function Products() {
   const dispatch = useDispatch();
@@ -12,66 +13,14 @@ export default function Products() {
 
   return (
     <>
-      <Container maxWidth="lg" sx={{ py: 8 }}>
+      <Container maxWidth={false} sx={{ py: 8 }}>
         <Typography variant="h2" align="center" gutterBottom sx={{ mb: 6, color: 'text.primary' }}>
           Productos Destacados
         </Typography>
 
         <ProductsGrid>
           {listModificada.map((product) => (
-            <ProductCard key={product.id}>
-              <Card
-                elevation={0}
-                sx={{
-                  height: '100%',
-                  boxShadow: 'none',
-                  // El zoom se maneja en ProductCard
-                  transition: 'none',
-                }}
-              >
-                <CardMedia
-                  component="img"
-                  image={product.image}
-                  alt={product.name}
-                  sx={{ height: { xs: 260, sm: 320, md: 530 }, objectFit: 'cover'}}
-                />
-                <CardContent>
-                  <Typography gutterBottom variant="h6" component="div" sx={{ fontWeight: 600 }}>
-                    {product.name}
-                  </Typography>
-                  <Typography
-                    variant="h6"
-                    color="primary.main"
-                    sx={{ fontWeight: 400, fontSize: '1rem' }}
-                  >
-                    {product.price}
-                  </Typography>
-                  {/* <Typography variant="body2" color="text.secondary" gutterBottom>
-                    {product.category}
-                  </Typography> */}
-                  {/* <Box
-                    sx={{
-                      display: 'flex',
-                      justifyContent: 'space-between',
-                      alignItems: 'center',
-                      mt: 2,
-                    }}
-                  >
-                    <Typography variant="h6" color="primary.main" sx={{ fontWeight: 700 }}>
-                      {product.price}
-                    </Typography>
-                    <Box>
-                      <IconButton size="small" color="secondary">
-                        <Favorite />
-                      </IconButton>
-                      <Button variant="contained" size="small" sx={{ ml: 1 }}>
-                        Agregar
-                      </Button>
-                    </Box>
-                  </Box> */}
-                </CardContent>
-              </Card>
-            </ProductCard>
+            <Product show={true} product={product} key={product.id}/>
           ))}
         </ProductsGrid>
       </Container>
