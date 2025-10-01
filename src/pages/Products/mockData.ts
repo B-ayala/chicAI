@@ -41,6 +41,8 @@ export const featuredProducts = [
     price: '$89.99',
     image: camisa, // was url: camisa
     category: 'Chaquetas',
+    quotas:3,
+    color:["#ee1d1d","#0c0d77","#000000"],
   },
   {
     id: 2,
@@ -48,6 +50,8 @@ export const featuredProducts = [
     price: '$129.99',
     image: primavera, // was url: camisaRoja
     category: 'Vestidos',
+    quotas:6,
+    color:["#ee1d1d","#0c0d77","#000000"],
   },
   {
     id: 3,
@@ -55,6 +59,8 @@ export const featuredProducts = [
     price: '$159.99',
     image: camisaRosa, // was url: camisaRosa
     category: 'Calzado',
+    quotas:3,
+    color:["#ee1d1d","#0c0d77","#000000"],
   },
   {
     id: 4,
@@ -64,6 +70,8 @@ export const featuredProducts = [
       imagesMap['crisp-white-formal-shirt-folded-neatly.jpg'] ||
       '/crisp-white-formal-shirt-folded-neatly.jpg',
     category: 'Camisas',
+    quotas:4,
+    color:["#ee1d1d","#0c0d77","#000000"],
   },
   {
     id: 5,
@@ -71,6 +79,8 @@ export const featuredProducts = [
     price: '$79.99',
     image: imagesMap['casual-khaki-pants-laid-flat.jpg'] || '/casual-khaki-pants-laid-flat.jpg',
     category: 'Pantalones',
+    quotas:6,
+    color:["#ee1d1d","#0c0d77","#000000"],
   },
   {
     id: 6,
@@ -80,5 +90,7 @@ export const featuredProducts = [
       imagesMap['luxury-leather-handbag-on-marble-surface.jpg'] ||
       '/luxury-leather-handbag-on-marble-surface.jpg',
     category: 'Accesorios',
+    quotas:2,
+    color:["#ee1d1d","#0c0d77","#000000"],
   },
 ];
