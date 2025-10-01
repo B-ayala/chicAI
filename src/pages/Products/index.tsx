@@ -1,12 +1,10 @@
 import { Container, Typography } from '@mui/material';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import Product from '../../components/Product/Product';
 import { RootState } from '../../store';
 import { ProductsGrid } from './styled';
 
 export default function Products() {
-  const dispatch = useDispatch();
-
   const listProducts = useSelector((state: RootState) => state.product.value);
   const list = listProducts['0'];
   const listModificada = Object.values(list); //devuelve array de objetos
@@ -20,7 +18,7 @@ export default function Products() {
 
         <ProductsGrid>
           {listModificada.map((product) => (
-            <Product show={true} product={product} key={product.id}/>
+            <Product show={true} product={product} key={product.id} />
           ))}
         </ProductsGrid>
       </Container>
