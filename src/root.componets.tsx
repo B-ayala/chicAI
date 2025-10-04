@@ -1,17 +1,17 @@
 import { ThemeProvider } from "@mui/material/styles";
-import { BrowserRouter } from "react-router-dom";
+import { HashRouter } from "react-router-dom";
 import AppRouter from "./routers/AppRouter";
 import theme from "./theme";
 
-
+// HashRouter no necesita basename para GitHub Pages
+// ya que usa fragmentos de URL (#) en lugar de rutas reales
 
 const Root: React.FC = () => {
     return (
-        
         <ThemeProvider theme={theme} >
-            <BrowserRouter>
+            <HashRouter>
                 <AppRouter />
-            </BrowserRouter>
+            </HashRouter>
         </ThemeProvider>
     )
 };
