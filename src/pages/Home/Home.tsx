@@ -29,9 +29,7 @@ export default function Home() {
         </Typography>
         <ProductsGrid>
           {featuredProducts.slice(0, 6).map((product) => (
-           
-            <Product product={product} show={false} key={product.id}/>
-            
+            <Product product={product} show={false} key={product.id}/> 
             
           ))}
         </ProductsGrid>
