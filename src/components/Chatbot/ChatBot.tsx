@@ -5,6 +5,7 @@ import { useChatState } from './hooks/useChatState';
 import { useChatUI } from './hooks/useChatUI';
 import { useFileHandler } from './hooks/useFileHandler';
 import {
+  AnimatedBotIcon,
   BotMessage,
   BubbleButton,
   ChatBody,
@@ -83,12 +84,30 @@ export default function ChatBot() {
 
   return (
     <ChatbotWrapper>
-      {!open && <HelpText>¿Necesitás ayuda?</HelpText>}
+      {!open && <HelpText>Psss ¿Necesitás ayuda?</HelpText>}
       <BubbleButton aria-label="Abrir chat" onClick={toggleChat} open={open}>
-        <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-          <circle cx="14" cy="14" r="14" fill="#6C63FF" />
-          <path d="M9 12h10M9 16h6" stroke="#fff" strokeWidth="2" strokeLinecap="round" />
-        </svg>
+        <AnimatedBotIcon width="32" height="32" viewBox="0 0 32 32" fill="none">
+          <circle cx="16" cy="16" r="16" fill="url(#gradient)" />
+          <defs>
+            <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#6C63FF" />
+              <stop offset="100%" stopColor="#4F46E5" />
+            </linearGradient>
+          </defs>
+          {/* Bot head */}
+          <rect x="9" y="11" width="14" height="10" rx="3" fill="#fff" />
+          {/* Bot antenna */}
+          <rect x="14" y="8" width="4" height="3" rx="2" fill="#fff" />
+          <circle cx="16" cy="7" r="1.5" fill="#FFD700" className="antenna-light" />
+          {/* Bot eyes */}
+          <circle cx="13" cy="15" r="1.5" fill="#6C63FF" className="eye-left" />
+          <circle cx="19" cy="15" r="1.5" fill="#6C63FF" className="eye-right" />
+          {/* Bot mouth */}
+          <rect x="14" y="18" width="4" height="1.5" rx="0.75" fill="#6C63FF" />
+          {/* Bot ears/sensors */}
+          <rect x="7" y="14" width="2" height="3" rx="1" fill="#fff" />
+          <rect x="23" y="14" width="2" height="3" rx="1" fill="#fff" />
+        </AnimatedBotIcon>
       </BubbleButton>
       <ChatWindow open={open}>
         <ChatHeader>
@@ -101,7 +120,7 @@ export default function ChatBot() {
               border: 'none',
               fontSize: 20,
               cursor: 'pointer',
-              color: '#888',
+              color: '#f8f8f8ff',
             }}
           >
             ×

@@ -105,7 +105,7 @@ export const ChatInput: React.FC<ChatInputProps> = ({
         disabled={!canSend}
         style={{
           marginLeft: 8,
-          background: '#6c63ff',
+          background: '#25172bff',
           color: '#fff',
           border: 'none',
           borderRadius: 8,

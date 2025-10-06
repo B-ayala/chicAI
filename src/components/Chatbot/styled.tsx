@@ -17,7 +17,7 @@ export const ChatbotWrapper = styled.div`
 export const HelpText = styled.div`
   margin-bottom: 8px;
   background: rgba(255, 255, 255, 0.95);
-  color: #6c63ff;
+  color: #000000ff;
   font-size: 15px;
   font-weight: 500;
   padding: 6px 16px;
@@ -89,7 +89,7 @@ export const ChatWindow = styled.div<{ open: boolean }>`
 `;
 
 export const ChatHeader = styled.div`
-  background: linear-gradient(90deg, #6c63ff 0%, #5a55d6 100%);
+  background: linear-gradient(90deg, #000000ff 0%, #5a55d6 100%);
   color: #fff;
   font-size: 17px;
   font-weight: 600;
@@ -162,7 +162,7 @@ export const LoadingBubble = styled.span`
     width: 7px;
     height: 7px;
     margin: 0 2px;
-    background: #b3b3e6;
+    background: #000000ff;
     border-radius: 50%;
     animation: ${bounce} 1.2s infinite;
     &:nth-child(2) {
@@ -195,4 +195,70 @@ export const ChatInputWrapper = styled.div`
       transform: rotate(360deg);
     }
   }
+`;
+
+const pulse = keyframes`
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+`;
+
+const blink = keyframes`
+  0%, 90%, 100% {
+    transform: scaleY(1);
+  }
+  95% {
+    transform: scaleY(0.1);
+  }
+`;
+
+const antennaGlow = keyframes`
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.2);
+  }
+`;
+
+const botBounce = keyframes`
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-3px);
+  }
+  60% {
+    transform: translateY(-1px);
+  }
+`;
+
+export const AnimatedBotIcon = styled.svg`
+  animation: ${pulse} 2s ease-in-out infinite;
+
+  &:hover {
+    animation: ${botBounce} 1s ease-in-out infinite;
+  }
+
+  .eye-left,
+  .eye-right {
+    animation: ${blink} 3s ease-in-out infinite;
+    transform-origin: center;
+  }
+
+  .eye-right {
+    animation-delay: 0.1s;
+  }
+
+  .antenna-light {
+    animation: ${antennaGlow} 1.5s ease-in-out infinite;
+    transform-origin: center;
+  }
+
+  transition: all 0.3s ease;
 `;
