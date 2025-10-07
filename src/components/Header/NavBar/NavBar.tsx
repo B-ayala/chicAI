@@ -8,6 +8,7 @@ import menuData from './MenuData/MenuData';
 
 import Search from '../Search/Search';
 
+import { ContainerSearch } from '../Search/styled';
 import {
   Brand,
   BrandIcon,
@@ -98,8 +99,12 @@ export default function NavBar() {
               Contacto
             </ContactButton>
           </MenuItem>
-          <Search ancho={400} formType="outlined" margen={40} closeMenu={setOpen} />
+          
         </MenuList>
+        <ContainerSearch>
+             <Search ancho={400} formType="outlined" margen={0} closeMenu={setOpen} />
+        </ContainerSearch>
+       
       </TopNavBar>
 
       {/*     vista mobile */}

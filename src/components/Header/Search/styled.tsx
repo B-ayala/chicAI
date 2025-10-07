@@ -1,9 +1,24 @@
 import styled from "styled-components";
+import { breakpoints } from "../NavBar/styled";
 const primaryColor = '#E91E63'
+
+export const ContainerSearch = styled.div`
+    display: none;
+
+  @media (min-width: ${breakpoints.tablet}) {
+    display: block;
+    margin-top: 4px;
+  };
+  @media (min-width: ${breakpoints.desktop}) {
+    display: block;
+    margin-left: 40px;
+  }
+`
+
 export const TextSearch = styled.button`
     color:inherit;
     text-decoration:none;
-    font-sinze:15px;
+    font-size:15px;
     display:block;
     border-width: 0;
     background-color:inherit;

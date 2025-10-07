@@ -10,9 +10,9 @@ const hoverBg = '#fce4ec';
 const blackColor = '#000000';
 
 // Breakpoints para diseño responsive
-const breakpoints = {
+export const breakpoints = {
   mobile: '600px',
-  tablet: '900px',
+  tablet: '768px',
   desktop: '1200px'
 };
 
@@ -68,6 +68,9 @@ export const TopNavBar = styled.nav`
   
   @media (min-width: ${breakpoints.tablet}) {
     padding: 0.75rem 2.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    
   }
 `;
 
@@ -83,7 +86,7 @@ export const Brand = styled.a`
   text-shadow: 0 1px 0 #fff, 0 2px 8px rgba(233,30,99,0.08);
   flex-shrink: 0;
   font-family: inherit;
-
+  
   &:hover, &:focus {
     color: ${accentColor};
   }
@@ -95,7 +98,8 @@ export const BrandIcon = styled.span`
   justify-content: center;
   svg {
     display: block;
-  }
+  };
+  flex-grow: 1;
 `;
 
 export const MenuList = styled.ul`
@@ -121,8 +125,10 @@ export const MenuList = styled.ul`
   }
 
   @media (min-width: ${breakpoints.tablet}) {
-    gap: 1.5rem;
+    gap: 0.5rem;
     margin-left: 3rem;
+    
+    
   }
   
   @media (min-width: ${breakpoints.desktop}) {
@@ -149,6 +155,8 @@ export const MenuItem = styled.li`
     text-align: left;
     margin: 0.25rem 0;
   }
+  
+
 `;
 
 export const MenuLink = styled.a`
@@ -165,6 +173,8 @@ export const MenuLink = styled.a`
   @media (min-width: ${breakpoints.tablet}) {
     padding: 0.5rem 1rem;
     font-size: 1rem;
+    
+    
   }
   
   @media (min-width: ${breakpoints.desktop}) {

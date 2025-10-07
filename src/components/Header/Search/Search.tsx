@@ -36,7 +36,7 @@ export default function Search({ancho,margen,formType,closeMenu}:SearchProps){
     ]
     const [input,setInput] = useState("");
     const [products, setProducts] = useState<Product[]>([]);
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
 
 
     //const listProducts = useSelector((state:RootState)=>state.product.value)
@@ -69,7 +69,7 @@ export default function Search({ancho,margen,formType,closeMenu}:SearchProps){
         dispatch(getProducts(filterProducts))
         setProducts([])
         closeMenu(false)
-        console.log("buscando...")
+        
     }
 
     return (
@@ -106,8 +106,6 @@ export default function Search({ancho,margen,formType,closeMenu}:SearchProps){
                                             <BotonSearch onClick={handleClickCross}>
                                                 <ClearOutlinedIcon/>
                                             </BotonSearch>
-                                            
-                                           
                                         
                                         
                                     </InputAdornment>
