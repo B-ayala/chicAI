@@ -182,7 +182,7 @@ const spin = keyframes`
 export const ChatInputWrapper = styled.div`
   padding: 14px 18px;
   background: #f5f7fa;
-  border-top: 1px solid #ececff;
+  border-top: 3px solid #9a98c4ff;
   display: flex;
   align-items: center;
   gap: 6px;
