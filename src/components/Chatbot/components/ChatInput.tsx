@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { ChatInputWrapper } from '../styled';
 
 interface ChatInputProps {
@@ -26,12 +26,22 @@ export const ChatInput: React.FC<ChatInputProps> = ({
   onKeyDown,
   isOpen,
 }) => {
+  const inputRef = useRef<HTMLInputElement>(null);
+
   const canSend = !loading && !isProcessingFile && (input.trim() || attachedFile);
   const isDisabled = loading || isProcessingFile;
+
+  // Mantener el foco en el input cuando el chat está abierto y no está deshabilitado
+  useEffect(() => {
+    if (isOpen && !loading && !isProcessingFile) {
+      inputRef.current?.focus();
+    }
+  }, [isOpen, loading, isProcessingFile, attachedFile]);
 
   return (
     <ChatInputWrapper>
       <input
+        ref={inputRef}
         type="text"
         placeholder={isProcessingFile ? 'Procesando archivo...' : 'Escribí tu mensaje...'}
         value={input}

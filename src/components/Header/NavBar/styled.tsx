@@ -34,18 +34,20 @@ export const GlobalNavStyles = createGlobalStyle`
 export const NavBarContainer = styled.header`
   max-width: 100%;
   width: 100%;
-   /* prevención extra por si algún hijo genera desborde */
+  /* prevención extra por si algún hijo genera desborde */
   background: ${lightColor};
   position: sticky;
   top: 0;
   left: 0;
   z-index: 100;
-  box-shadow: 0 2px 12px rgba(233,30,99,0.08);
+  box-shadow: 0 2px 12px rgba(233, 30, 99, 0.08);
   border-bottom: 2px solid ${lightColor};
-  font-family: 'Montserrat', 'Poppins', 'Quicksand', 'Nunito', 'Raleway', 'Open Sans', Arial, sans-serif;
+  font-family: 'Montserrat', 'Poppins', 'Quicksand', 'Nunito', 'Raleway', 'Open Sans', Arial,
+    sans-serif;
 
   /* Elimina los puntitos de cualquier ul/li anidados */
-  ul, li {
+  ul,
+  li {
     list-style: none;
     padding: 0;
   }
@@ -61,11 +63,11 @@ export const TopNavBar = styled.nav`
   min-height: 20px;
   position: relative;
   z-index: 10;
-  
+
   @media (min-width: ${breakpoints.mobile}) {
     padding: 0.75rem 1.5rem;
   }
-  
+
   @media (min-width: ${breakpoints.tablet}) {
     padding: 0.75rem 2.5rem;
     flex-wrap: wrap;
@@ -83,11 +85,12 @@ export const Brand = styled.a`
   color: ${blackColor};
   text-decoration: none;
   letter-spacing: 0.04em;
-  text-shadow: 0 1px 0 #fff, 0 2px 8px rgba(233,30,99,0.08);
+  text-shadow: 0 1px 0 #fff, 0 2px 8px rgba(233, 30, 99, 0.08);
   flex-shrink: 0;
   font-family: inherit;
-  
-  &:hover, &:focus {
+
+  &:hover,
+  &:focus {
     color: ${accentColor};
   }
 `;
@@ -130,15 +133,15 @@ export const MenuList = styled.ul`
     
     
   }
-  
+
   @media (min-width: ${breakpoints.desktop}) {
     gap: 2.5rem;
     margin-left: 4rem;
   }
-  
+
   .contact-item {
     margin-left: 0.5rem;
-    
+
     @media (min-width: ${breakpoints.tablet}) {
       margin-left: 1rem;
     }
@@ -164,28 +167,28 @@ export const MenuLink = styled.a`
   color: ${darkColor};
   position: relative;
 
-
   @media (min-width: ${breakpoints.mobile}) {
     padding: 0.5rem 0.8rem;
     font-size: 0.95rem;
   }
 
   @media (min-width: ${breakpoints.tablet}) {
-    padding: 0.5rem 1rem;
+    padding: 0.5rem .5rem;//cambios
     font-size: 1rem;
     
     
   }
-  
+
   @media (min-width: ${breakpoints.desktop}) {
     padding: 0.5rem 1.1rem;
     font-size: 1.08rem;
   }
 
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     color: ${darkColor}; // Puedes cambiar a otro color si quieres, aquí se mantiene el texto rosado
     background: ${borderColor}; // Cambia el sombreado a gris claro
-    box-shadow: 0 2px 8px rgba(233,30,99,0.08);
+    box-shadow: 0 2px 8px rgba(233, 30, 99, 0.08);
   }
 
   &::after {
@@ -201,7 +204,8 @@ export const MenuLink = styled.a`
     border-radius: 2px;
   }
 
-  &:hover::after, &:focus::after {
+  &:hover::after,
+  &:focus::after {
     width: 100%;
   }
 `;
@@ -212,25 +216,14 @@ export const Hamburger = styled.button<{ 'aria-expanded': boolean }>`
   justify-content: space-around;
   width: 3.5rem;
   height: 2.5rem;
-  background: ${({ 'aria-expanded': open }) => open ? 'rgba(233, 30, 99, 0.1)' : 'transparent'};
   border: none;
   border-radius: 50%;
   cursor: pointer;
   padding: 0.5rem;
   z-index: 110;
   margin-left: auto;
-  transition: background 0.3s ease, transform 0.3s ease;
+  transition: transform 0.3s ease;
   position: relative;
-
-  &:hover {
-    background: rgba(233, 30, 99, 0.1);
-    transform: scale(1.05);
-  }
-
-  &:focus {
-    outline: none;
-    box-shadow: 0 0 0 2px rgba(233, 30, 99, 0.3);
-  }
 
   @media (min-width: ${breakpoints.mobile}) {
     display: none;
@@ -239,28 +232,25 @@ export const Hamburger = styled.button<{ 'aria-expanded': boolean }>`
   span {
     width: 1.5rem;
     height: 0.2rem;
-    background: ${({ 'aria-expanded': open }) => open ? primaryColor : darkColor};
+    background: ${darkColor};
     border-radius: 4px;
     transition: all 0.3s cubic-bezier(0.68, -0.6, 0.32, 1.6);
     position: absolute;
     left: 0.5rem;
     right: 0.5rem;
-
-    &:first-child {
-      top: ${({ 'aria-expanded': open }) => open ? '1.15rem' : '0.7rem'};
-      transform: ${({ 'aria-expanded': open }) => open ? 'rotate(45deg)' : 'rotate(0)'};
-    }
-
-    &:nth-child(2) {
-      top: 1.15rem;
-      opacity: ${({ 'aria-expanded': open }) => open ? '0' : '1'};
-      transform: ${({ 'aria-expanded': open }) => open ? 'translateX(1rem)' : 'translateX(0)'};
-    }
-
-    &:nth-child(3) {
-      top: ${({ 'aria-expanded': open }) => open ? '1.15rem' : '1.6rem'};
-      transform: ${({ 'aria-expanded': open }) => open ? 'rotate(-45deg)' : 'rotate(0)'};
-    }
+  }
+  span:first-child {
+    top: 0.7rem;
+    transform: rotate(0);
+  }
+  span:nth-child(2) {
+    top: 1.15rem;
+    opacity: 1;
+    transform: translateX(0);
+  }
+  span:nth-child(3) {
+    top: 1.6rem;
+    transform: rotate(0);
   }
 `;
 
@@ -277,11 +267,12 @@ export const ContactButton = styled.a`
   text-decoration: none;
   transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   white-space: nowrap;
-  box-shadow: 0 4px 12px rgba(233,30,99,0.2);
+  box-shadow: 0 4px 12px rgba(233, 30, 99, 0.2);
   position: relative;
   overflow: hidden;
   font-family: inherit;
-  
+  cursor: pointer;
+
   &:before {
     content: '';
     position: absolute;
@@ -289,33 +280,34 @@ export const ContactButton = styled.a`
     left: 0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 70%);
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0) 70%);
     transform: scale(0);
     opacity: 0;
     transition: transform 0.5s ease, opacity 0.5s ease;
   }
-  
-  &:hover, &:focus {
-    background-color: #d81b60;
-    box-shadow: 0 6px 16px rgba(233,30,99,0.4);
+
+  &:hover,
+  &:focus {
+    background-color: #929292ff;
+    box-shadow: 0 6px 16px rgba(87, 85, 85, 0.4);
     transform: translateY(-3px);
-    
+
     &:before {
       transform: scale(2);
       opacity: 1;
     }
   }
-  
+
   &:active {
     transform: translateY(-1px);
-    box-shadow: 0 3px 8px rgba(233,30,99,0.3);
+    box-shadow: 0 3px 8px rgba(233, 30, 99, 0.3);
   }
-  
+
   @media (min-width: ${breakpoints.mobile}) {
     font-size: 0.95rem;
     padding: 0.6rem 1.3rem;
   }
-  
+
   @media (min-width: ${breakpoints.tablet}) {
     font-size: 1rem;
     padding: 0.7rem 1.6rem;
@@ -337,8 +329,8 @@ export const MobileMenu = styled.div<{ open: boolean }>`
   top: 0;
   left: 0;
   transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  transform: ${({ open }) => open ? 'translateX(0)' : 'translateX(-100%)'};
-  z-index: 100;
+  transform: ${({ open }) => (open ? 'translateX(0)' : 'translateX(-100%)')};
+  z-index: 200; /* Asegura que esté sobre el overlay */
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
   overflow-y: auto;
   border-right: 1px solid rgba(255, 255, 255, 0.1);
@@ -361,13 +353,14 @@ export const MobileMenu = styled.div<{ open: boolean }>`
     color: ${lightColor};
     transition: all 0.2s ease;
     font-family: inherit;
-    
-    &:hover, &:focus {
+
+    &:hover,
+    &:focus {
       background: rgba(255, 255, 255, 0.1);
       transform: translateX(5px);
       color: ${primaryColor};
     }
-    
+
     &::after {
       display: none;
     }
@@ -387,9 +380,60 @@ export const MobileMenu = styled.div<{ open: boolean }>`
     padding: 0.7rem 2rem;
     margin: 0 auto;
     display: inline-block;
-    background-color: ${primaryColor};
+    background-color: ${blackColor};
     color: ${lightColor};
-    box-shadow: 0 4px 12px rgba(233, 30, 99, 0.3);
+    box-shadow: 0 4px 12px rgba(240, 240, 240, 0.3);
+  }
+
+  /* Botón de cerrar (X) */
+  .close-mobile-menu {
+    position: absolute;
+    top: 1.2rem;
+    right: 1.2rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    background: rgba(255, 255, 255, 0.95);
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 210;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    transition: background 0.2s;
+
+    &:hover,
+    &:focus {
+      background: #fce4ec;
+      outline: none;
+    }
+
+    span {
+      display: block;
+      width: 1.3rem;
+      height: 1.3rem;
+      position: relative;
+    }
+
+    span::before,
+    span::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 1.1rem;
+      height: 2.5px;
+      background: #23272f;
+      border-radius: 2px;
+      transform-origin: center;
+    }
+    span::before {
+      transform: translate(-50%, -50%) rotate(45deg);
+    }
+    span::after {
+      transform: translate(-50%, -50%) rotate(-45deg);
+    }
   }
 
   @media (min-width: ${breakpoints.mobile}) {
@@ -401,15 +445,16 @@ export const Overlay = styled.div<{ open: boolean }>`
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   background: rgba(0, 0, 0, 0.7);
   backdrop-filter: blur(2px);
-  opacity: ${({ open }) => open ? '1' : '0'};
-  visibility: ${({ open }) => open ? 'visible' : 'hidden'};
+  opacity: ${({ open }) => (open ? '1' : '0')};
+  visibility: ${({ open }) => (open ? 'visible' : 'hidden')};
   transition: opacity 0.3s ease, visibility 0.3s ease;
-  z-index: 90;
-  
+  z-index: 100; /* Debajo del MobileMenu */
+  pointer-events: ${({ open }) => (open ? 'auto' : 'none')};
+
   @media (min-width: ${breakpoints.mobile}) {
     display: none;
   }
@@ -425,7 +470,7 @@ export const MenuIcon = styled.span`
   color: currentColor;
   opacity: 0.8;
   transition: opacity 0.2s ease;
-  
+
   svg {
     width: 100%;
     height: 100%;
@@ -436,25 +481,19 @@ export const MenuIcon = styled.span`
 
 export const ChevronRight = () => (
   <svg viewBox="0 0 20 20" fill="currentColor">
-    <path d="M7.293 16.293a1 1 0 010-1.414L12.172 10 7.293 5.121a1 1 0 111.414-1.414l5.293 5.293a1 1 0 010 1.414l-5.293 5.293a1 1 0 01-1.414 0z"/>
+    <path d="M7.293 16.293a1 1 0 010-1.414L12.172 10 7.293 5.121a1 1 0 111.414-1.414l5.293 5.293a1 1 0 010 1.414l-5.293 5.293a1 1 0 01-1.414 0z" />
   </svg>
 );
 
 export const HomeIcon = () => (
   <svg viewBox="0 0 24 24" fill="currentColor">
-    <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+    <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
   </svg>
 );
 
 export const AboutIcon = () => (
   <svg viewBox="0 0 24 24" fill="currentColor">
-    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
-  </svg>
-);
-
-export const ContactIcon = () => (
-  <svg viewBox="0 0 24 24" fill="currentColor">
-    <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" />
   </svg>
 );
 
@@ -473,4 +512,14 @@ export const ChevronIcon = styled.span`
   display: inline-flex;
   vertical-align: middle;
   opacity: 0.5;
+`;
+
+export const LoginDesktop = styled.div`
+  margin-left: auto;
+  display: none;
+  align-items: center;
+
+  @media (min-width: ${breakpoints.mobile}) {
+    display: flex;
+  }
 `;

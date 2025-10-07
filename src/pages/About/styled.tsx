@@ -170,7 +170,8 @@ export const ContactButton = styled.button`
   box-shadow: 0 2px 8px rgba(224, 122, 95, 0.08);
   &:hover,
   &:focus {
-    background: linear-gradient(90deg, #f4a261 60%, ${colors.accent} 100%);
+    background: #e0e0e0; /* gris claro */
+    color: #3d2c1e; /* texto marrón oscuro para contraste */
     transform: translateY(-2px) scale(1.04);
     box-shadow: 0 4px 16px rgba(224, 122, 95, 0.13);
   }
