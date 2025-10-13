@@ -52,7 +52,7 @@ export const ChatInput: React.FC<ChatInputProps> = ({
           border: 'none',
           outline: 'none',
           background: 'transparent',
-          fontSize: 15,
+          fontSize: 16, // ← Asegura mínimo 16px para evitar zoom en mobile
           color: '#333',
         }}
         autoFocus={isOpen}

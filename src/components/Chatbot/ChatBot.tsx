@@ -1,3 +1,4 @@
+import React from 'react';
 import { ChatMessage } from '../../services/pipelineChatBot';
 import { ChatInput } from './components/ChatInput';
 import { FileAttachment } from './components/FileAttachment';
@@ -81,6 +82,16 @@ export default function ChatBot() {
       </LoadingBubble>
     </MessageRow>
   );
+
+  React.useEffect(() => {
+    if (open) {
+      const originalOverflow = document.body.style.overflow;
+      document.body.style.overflow = 'hidden';
+      return () => {
+        document.body.style.overflow = originalOverflow;
+      };
+    }
+  }, [open]);
 
   return (
     <ChatbotWrapper>
