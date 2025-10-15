@@ -4,13 +4,12 @@ import ProtectedRoute from './ProtectedRoute';
 
 const AdminRouter: React.FC = () => {
   return (
-    <>
-      <Routes>
-        <Route element={<ProtectedRoute isAdmin />}>
-          <Route path="/admin/dashboard" element={<Dashboard />} />
-        </Route>
-      </Routes>
-    </>
+    <Routes>
+      <Route element={<ProtectedRoute isAdmin />}>
+        <Route index element={<Dashboard />} />
+        <Route path="dashboard" element={<Dashboard />} />
+      </Route>
+    </Routes>
   );
 };
 

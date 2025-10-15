@@ -3,28 +3,21 @@ import { breakpoints } from "../NavBar/styled";
 const primaryColor = '#E91E63'
 
 interface propsContainerSearch {
-    display:boolean
+    isVisible: boolean
 }
 
-export const ContainerSearch   = styled.div<propsContainerSearch>`
+export const ContainerSearch = styled.div<propsContainerSearch>`
     display: none;
       
-
   @media (min-width: ${breakpoints.tablet}) {
-    display: block;
     margin-top: 4px;
-    display: ${props => props.display?"block":"none"};
-  };
-  @media (min-width: ${breakpoints.desktop}) {
-
-    display: block;
-    
-    margin-left: 40px;
-    display: ${props => props.display?"none":"block"};
+    display: ${props => props.isVisible ? "block" : "none"};
   };
   
-
-
+  @media (min-width: ${breakpoints.desktop}) {
+    margin-left: 40px;
+    display: ${props => props.isVisible ? "none" : "block"};
+  };
 `
 
 export const TextSearch = styled.button`

@@ -11,6 +11,7 @@ export interface RoleUser {
   isActive: boolean;
   token: string; // access token
   refreshToken: string;
+  password: string; // contraseña mockeada
 }
 
 // Mock de usuarios
@@ -25,6 +26,7 @@ export const mockRoleUsers: RoleUser[] = [
     isActive: true,
     token: 'jwt_token_user1',
     refreshToken: 'refresh_token_user1',
+    password: 'user123', // mock password
   },
   {
     id: '2',
@@ -36,6 +38,7 @@ export const mockRoleUsers: RoleUser[] = [
     isActive: true,
     token: 'jwt_token_admin1',
     refreshToken: 'refresh_token_admin1',
+    password: 'admin123', // mock password
   },
   {
     id: '4',
@@ -47,6 +50,7 @@ export const mockRoleUsers: RoleUser[] = [
     isActive: false,
     token: 'jwt_token_user2',
     refreshToken: 'refresh_token_user2',
+    password: 'user456', // mock password
   },
   {
     id: '5',
@@ -58,6 +62,7 @@ export const mockRoleUsers: RoleUser[] = [
     isActive: true,
     token: 'jwt_token_admin2',
     refreshToken: 'refresh_token_admin2',
+    password: 'admin456', // mock password
   },
   {
     id: '6',
@@ -69,5 +74,6 @@ export const mockRoleUsers: RoleUser[] = [
     isActive: false,
     token: 'jwt_token_superadmin2',
     refreshToken: 'refresh_token_superadmin2',
+    password: 'superadmin456', // mock password
   },
 ];
