@@ -1,5 +1,5 @@
-import styled, { css } from 'styled-components';
 import { Link } from 'react-router-dom';
+import styled, { css } from 'styled-components';
 
 // Variables de color y tipografía
 const accent = '#ff4fa3';
@@ -196,5 +196,47 @@ export const UserAvatar = styled.div`
     color: ${accent};
     width: 28px;
     height: 28px;
+  }
+`;
+
+// Botón de cerrar sesión
+export const LogoutButton = styled.button`
+  width: calc(100% - 48px);
+  margin: 0 24px 16px 24px;
+  padding: 12px 16px;
+  background: transparent;
+  border: 1.5px solid ${accent};
+  border-radius: 8px;
+  color: ${accent};
+  font-family: ${font};
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: all 0.2s ease;
+
+  svg {
+    width: 20px;
+    height: 20px;
+    color: ${accent};
+  }
+
+  &:hover {
+    background: ${accent};
+    color: #fff;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(255, 79, 163, 0.3);
+
+    svg {
+      color: #fff;
+    }
+  }
+
+  &:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 6px rgba(255, 79, 163, 0.3);
   }
 `;

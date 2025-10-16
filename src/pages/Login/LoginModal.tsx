@@ -70,7 +70,14 @@ function validateFields(fields: FieldDef[], values: Values): Errors {
   return errors;
 }
 
-export function useFormValidation(fields: FieldDef[]) {
+export function useFormValidation(fields: FieldDef[]): {
+  values: Values;
+  errors: Errors;
+  handleChange: (name: string, value: string) => void;
+  validate: () => Errors;
+  setValues: React.Dispatch<React.SetStateAction<Values>>;
+  setErrors: React.Dispatch<React.SetStateAction<Errors>>;
+} {
   const [values, setValues] = useState<Values>({});
   const [errors, setErrors] = useState<Errors>({});
 
@@ -169,7 +176,7 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
       signupValidation.setErrors({});
       setShowPassword({});
     }
-  }, [isOpen, loginValidation, signupValidation]);
+  }, [isOpen]);
 
   const toggleForm = () => {
     setIsLoginForm(!isLoginForm);
@@ -184,8 +191,38 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
     const hasErrors = Object.values(validationErrors).some((error) => error !== null);
 
     if (!hasErrors) {
-      // Aquí iría la lógica de autenticación o registro
-      console.log('Form submitted:', isLoginForm ? 'Login' : 'Sign Up', formValidation.values);
+      // Verificar si es un administrador
+      const email = formValidation.values.email;
+      const password = formValidation.values.password;
+
+      // Importamos los usuarios mock para verificar credenciales
+      import('../../admin/services/pipelineRoleUsers').then(({ mockRoleUsers }) => {
+        const user = mockRoleUsers.find((u) => u.email === email && u.password === password);
+
+        if (user) {
+          // Guardar información del usuario en localStorage
+          localStorage.setItem(
+            'user',
+            JSON.stringify({
+              id: user.id,
+              name: user.name,
+              email: user.email,
+              role: user.role,
+              token: user.token,
+            })
+          );
+
+          // Redirigir según el rol
+          if (user.role === 'admin' || user.role === 'superAdmin') {
+            window.location.href = '#/admin/dashboard';
+          } else {
+            onClose(); // Solo cerrar el modal para usuarios normales
+          }
+        } else {
+          console.log('Credenciales incorrectas');
+          // Aquí podrías mostrar un mensaje de error
+        }
+      });
     }
   };
 

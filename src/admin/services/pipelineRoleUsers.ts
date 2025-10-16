@@ -31,7 +31,7 @@ export const mockRoleUsers: RoleUser[] = [
   {
     id: '2',
     name: 'Administrador',
-    email: 'admin1@chicai.com',
+    email: 'admin@chicai.com',
     role: 'admin',
     createdAt: '2023-10-15T09:00:00Z',
     lastLogin: '2024-06-02T12:45:00Z',

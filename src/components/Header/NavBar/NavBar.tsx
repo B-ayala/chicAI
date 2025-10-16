@@ -111,7 +111,7 @@ export default function NavBar() {
         </MenuList>
 
 
-        <ContainerSearch display={false}>
+        <ContainerSearch isVisible={false}>
              <Search ancho={400} formType="outlined" margen={0} closeMenu={setOpen} />
         </ContainerSearch>
        
@@ -140,7 +140,7 @@ export default function NavBar() {
           </ContactButton>
         </LoginDesktop>
         
-        <ContainerSearch display={true}>
+        <ContainerSearch isVisible={true}>
              <Search ancho={400} formType="outlined" margen={0} closeMenu={setOpen} />
         </ContainerSearch>
       </TopNavBar>
