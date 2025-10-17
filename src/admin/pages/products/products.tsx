@@ -1,18 +1,20 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-export default function Products() {
-
-  const CustomerContainer = styled.div`
+const ProductsContainer = styled.div`
   padding: 20px;
-  margin-left: 250px; /* Espacio para el sidebar */
   background-color: rgb(245, 245, 245);
   min-height: 100vh;
+
+  @media (max-width: 768px) {
+    padding: 15px;
+  }
 `;
 
+export default function Products() {
   return (
-    <CustomerContainer>
+    <ProductsContainer>
       <h1>Productos</h1>
       <p>Sección de gestión de productos.</p>
-    </CustomerContainer>
+    </ProductsContainer>
   );
 }

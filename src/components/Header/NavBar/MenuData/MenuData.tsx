@@ -1,6 +1,5 @@
-
 const menuData = [
-  { label: 'Home', url: '/', Children: [] },
+  { label: 'Inicio', url: '/', Children: [] },
   { label: 'Products', url: '/products', Children: [] },
   { label: 'About', url: '/about', Children: [] },
   { label: 'Login', url: '#', Children: [] },

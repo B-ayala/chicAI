@@ -1,12 +1,12 @@
 import { Link } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 
-// Colores personalizados para el sidebar admin
-const sidebarBg = 'rgba(255, 255, 255, 0.81)'; // #f5b6c3 con opacidad
-const accent = '#f37daaff'; // Blanco para íconos y textos principales
-const accentLight = 'rgba(253, 26, 26, 0.18)';
-const border = 'rgba(110, 110, 110, 0.22)';
-const text = '#000000ff'; // Blanco para texto
+// Colores para el sidebar público
+const sidebarBg = '#fff';
+const accent = '#E91E63';
+const accentLight = 'rgba(233, 30, 99, 0.08)';
+const border = '#e5e5e5';
+const text = '#232946';
 const sidebarWidth = '240px';
 const font = `'Poppins', 'Inter', Arial, sans-serif`;
 
@@ -21,7 +21,7 @@ export const SidebarContainer = styled.nav<{ open?: boolean }>`
   top: 0;
   left: 0;
   z-index: 1200;
-  box-shadow: 2px 0 12px rgba(0, 0, 0, 0.04);
+  box-shadow: 2px 0 12px rgba(0, 0, 0, 0.08);
   border-right: 1px solid ${border};
   display: flex;
   flex-direction: column;
@@ -106,8 +106,8 @@ export const HamburgerButton = styled.button<{ open?: boolean }>`
   align-items: center;
   gap: 5px;
   cursor: pointer;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
-  transition: background 0.2s, opacity 0.2s, visibility 0.2s;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: background 0.2s;
   @media (min-width: 900px) {
     display: none;
   }
@@ -117,12 +117,21 @@ export const HamburgerButton = styled.button<{ open?: boolean }>`
     height: 3px;
     background: ${accent};
     border-radius: 2px;
+    transition: all 0.3s;
   }
   ${({ open }) =>
     open &&
     css`
-      opacity: 0;
-      visibility: hidden;
+      background: ${accentLight};
+      span:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+      }
+      span:nth-child(2) {
+        opacity: 0;
+      }
+      span:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+      }
     `}
 `;
 
@@ -135,7 +144,7 @@ export const Overlay = styled.div<{ open?: boolean }>`
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(34, 34, 34, 0.18);
+  background: rgba(34, 34, 34, 0.4);
   @media (min-width: 900px) {
     display: none;
   }
@@ -150,7 +159,7 @@ export const CloseButton = styled.button`
   cursor: pointer;
   display: flex;
   align-items: center;
-  color: ${accent};
+  color: ${text};
   @media (min-width: 900px) {
     display: none;
   }
@@ -160,7 +169,7 @@ export const CloseButton = styled.button`
 export const UserInfo = styled.div`
   width: 100%;
   padding: 18px 24px;
-  border-top: 1px solid ${border};
+  border-bottom: 1px solid ${border};
   display: flex;
   align-items: center;
   background: ${sidebarBg};
@@ -191,15 +200,15 @@ export const UserAvatar = styled.div`
   }
 `;
 
-// Botón de cerrar sesión
-export const LogoutButton = styled.button`
+// Botón de acción (login, register, etc)
+export const ActionButton = styled.button`
   width: calc(100% - 48px);
   margin: 0 24px 16px 24px;
   padding: 12px 16px;
-  background: transparent;
-  border: 1.5px solid ${accent};
+  background: ${accent};
+  border: none;
   border-radius: 8px;
-  color: ${accent};
+  color: #fff;
   font-family: ${font};
   font-size: 1rem;
   font-weight: 600;
@@ -213,22 +222,17 @@ export const LogoutButton = styled.button`
   svg {
     width: 20px;
     height: 20px;
-    color: ${accent};
+    color: #fff;
   }
 
   &:hover {
-    background: ${accent};
-    color: ${sidebarBg};
+    background: #d81b60;
     transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.18);
-
-    svg {
-      color: ${sidebarBg};
-    }
+    box-shadow: 0 4px 12px rgba(233, 30, 99, 0.3);
   }
 
   &:active {
     transform: translateY(0);
-    box-shadow: 0 2px 6px rgba(255, 255, 255, 0.18);
+    box-shadow: 0 2px 6px rgba(233, 30, 99, 0.3);
   }
 `;
