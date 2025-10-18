@@ -43,6 +43,7 @@ export const featuredProducts = [
     category: 'Chaquetas',
     quotas:3,
     color:["#ee1d1d","#0c0d77","#000000"],
+    size:["20","30","40","60","65","70","43","80"],
   },
   {
     id: 2,
@@ -52,6 +53,7 @@ export const featuredProducts = [
     category: 'Vestidos',
     quotas:6,
     color:["#ee1d1d","#0c0d77","#000000"],
+    size:["20","30","40","60","65","80"],
   },
   {
     id: 3,
@@ -61,6 +63,7 @@ export const featuredProducts = [
     category: 'Calzado',
     quotas:3,
     color:["#ee1d1d","#0c0d77","#000000"],
+    size:["60","65","70","43","80"],
   },
   {
     id: 4,
@@ -72,6 +75,7 @@ export const featuredProducts = [
     category: 'Camisas',
     quotas:4,
     color:["#ee1d1d","#0c0d77","#000000"],
+    size:["20","30","40","60","65","70","43","80"],
   },
   {
     id: 5,
@@ -81,6 +85,7 @@ export const featuredProducts = [
     category: 'Pantalones',
     quotas:6,
     color:["#ee1d1d","#0c0d77","#000000"],
+    size:["20","30","40","60"],
   },
   {
     id: 6,
@@ -92,5 +97,6 @@ export const featuredProducts = [
     category: 'Accesorios',
     quotas:2,
     color:["#ee1d1d","#0c0d77","#000000"],
+    size:["20","30","40","60","65","70","43","80"],
   },
 ];

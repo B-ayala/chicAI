@@ -1,4 +1,5 @@
 import { Box, Button, Card, CardContent, CardMedia, Container, Typography } from "@mui/material"
+import { useNavigate } from "react-router-dom"
 import { ProductCard, ProductImage } from "../../pages/Products/styled"
 
 type typeProduct = {
@@ -17,7 +18,16 @@ type typeProps ={
   show:boolean,
 }
 
+
+
+
 function Product({product,show}:typeProps) {
+  const navigate = useNavigate();
+  const buttonProduct = (id:number) =>{
+    
+    navigate(`/products/detail/${id}`);
+  }
+  
   return (
     <ProductCard >
               <Card
@@ -66,15 +76,15 @@ function Product({product,show}:typeProps) {
                       </Typography>
                       <Container sx={{display:"flex",justifyContent:"center",gap:1}}>
                         {
-                          product.color.map((item)=>(
-                            <Box key={product.id} width={30} borderRadius={100} sx={{background:item,}} height={30} marginTop={1}/>
+                          product.color.map((item,index)=>(
+                            <Box key={index} width={30} borderRadius={100} sx={{background:item,}} height={30} marginTop={1}/>
                           ))
                         }
                       </Container>
                     </>
                   }
                   <Box sx={{marginY:"auto", display:"flex",justifyContent:"center",marginTop:2}}>
-                    <Button variant="outlined" sx={{}} color="inherit">Leer más</Button>
+                    <Button onClick={()=>buttonProduct(product.id)} variant="outlined" sx={{}} color="inherit">Leer más</Button>
                   </Box>
                   
                 </CardContent>
