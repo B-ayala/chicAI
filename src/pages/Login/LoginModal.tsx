@@ -8,7 +8,7 @@ import {
   signupFields,
   switchTexts,
   welcomeMessages,
-} from '../../services/pipelineLoginService';
+} from '../../users/services/pipelineLoginService';
 import {
   CloseButton,
   Form,

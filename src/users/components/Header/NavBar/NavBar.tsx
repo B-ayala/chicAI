@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { PerchaIcon } from '../../../assets/svg/PerchaIcon';
-import ContactModal from '../../../pages/Contact/ContactModal';
-import LoginModal from '../../../pages/Login/LoginModal';
+import { PerchaIcon } from '../../../../assets/svg/PerchaIcon';
+import ContactModal from '../../../../pages/Contact/ContactModal';
+import LoginModal from '../../../../pages/Login/LoginModal';
 import menuData from './MenuData/MenuData';
 
-import { ContactIcon } from '../../../assets/svg/ContactIcon';
+import { ContactIcon } from '../../../../assets/svg/ContactIcon';
 import Search from '../Search/Search';
 
 import { ContainerSearch } from '../Search/styled';
@@ -33,8 +33,6 @@ const LoginIcon = () => (
     <path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.7-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4z" />
   </svg>
 );
-
-
 
 export default function NavBar() {
   const [open, setOpen] = useState(false);
@@ -107,15 +105,12 @@ export default function NavBar() {
               Contacto
             </ContactButton>
           </MenuItem>
-          
         </MenuList>
 
-
         <ContainerSearch isVisible={false}>
-             <Search ancho={400} formType="outlined" margen={0} closeMenu={setOpen} />
+          <Search ancho={400} formType="outlined" margen={0} closeMenu={setOpen} />
         </ContainerSearch>
-       
-         
+
         {/* Botón de Login solo visible en desktop */}
         <LoginDesktop>
           <ContactButton
@@ -139,9 +134,9 @@ export default function NavBar() {
             </MenuIcon>
           </ContactButton>
         </LoginDesktop>
-        
+
         <ContainerSearch isVisible={true}>
-             <Search ancho={400} formType="outlined" margen={0} closeMenu={setOpen} />
+          <Search ancho={400} formType="outlined" margen={0} closeMenu={setOpen} />
         </ContainerSearch>
       </TopNavBar>
 

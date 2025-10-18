@@ -1,7 +1,7 @@
 import { Container, Typography } from '@mui/material';
 import { useSelector } from 'react-redux';
-import Product from '../../components/Product/Product';
-import { RootState } from '../../store';
+import Product from '../../users/components/Product/Product';
+import { RootState } from '../../users/store';
 import { ProductsGrid } from './styled';
 
 export default function Products() {

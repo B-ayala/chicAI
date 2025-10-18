@@ -1,11 +1,12 @@
 import { Provider } from 'react-redux';
 import { Outlet } from 'react-router-dom';
 import Sidebar from '../admin/components/sidebar/sidebar';
-import ChatBot from '../components/Chatbot/ChatBot';
-import NavBar from '../components/Header/NavBar/NavBar';
-import TopNavBar from '../components/Header/TopNavBar/TopNavBar';
-import { MainLayout } from '../components/Layout';
-import store from '../store';
+
+import ChatBot from '../users/components/Chatbot/ChatBot';
+import NavBar from '../users/components/Header/NavBar/NavBar';
+import TopNavBar from '../users/components/Header/TopNavBar/TopNavBar';
+import MainLayout from '../users/components/Layout/MainLayout';
+import store from '../users/store';
 
 interface ProtectedRouteProps {
   isAdmin?: boolean;
