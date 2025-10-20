@@ -5,7 +5,7 @@ import Products from '../pages/Products';
 import ProductsDetail from '../pages/ProductsDetail/ProductsDetail';
 import ProtectedRoute from './ProtectedRoute';
 
-const AppRouter: React.FC = () => {
+const PublicRouter: React.FC = () => {
   return (
     <>
       <Routes>
@@ -20,4 +20,4 @@ const AppRouter: React.FC = () => {
   );
 };
 
-export default AppRouter;
+export default PublicRouter;

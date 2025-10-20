@@ -70,7 +70,14 @@ function validateFields(fields: FieldDef[], values: Values): Errors {
   return errors;
 }
 
-export function useFormValidation(fields: FieldDef[]) {
+export function useFormValidation(fields: FieldDef[]): {
+  values: Values;
+  errors: Errors;
+  handleChange: (name: string, value: string) => void;
+  validate: () => Errors;
+  setValues: React.Dispatch<React.SetStateAction<Values>>;
+  setErrors: React.Dispatch<React.SetStateAction<Errors>>;
+} {
   const [values, setValues] = useState<Values>({});
   const [errors, setErrors] = useState<Errors>({});
 
@@ -160,6 +167,17 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
   };
   const formValidation = isLoginForm ? loginValidation : signupValidation;
 
+  // Limpiar errores y valores al abrir/cerrar el modal
+  useEffect(() => {
+    if (!isOpen) {
+      loginValidation.setValues({});
+      loginValidation.setErrors({});
+      signupValidation.setValues({});
+      signupValidation.setErrors({});
+      setShowPassword({});
+    }
+  }, [isOpen]);
+
   const toggleForm = () => {
     setIsLoginForm(!isLoginForm);
     formValidation.setValues({});
@@ -173,8 +191,38 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
     const hasErrors = Object.values(validationErrors).some((error) => error !== null);
 
     if (!hasErrors) {
-      // Aquí iría la lógica de autenticación o registro
-      console.log('Form submitted:', isLoginForm ? 'Login' : 'Sign Up', formValidation.values);
+      // Verificar si es un administrador
+      const email = formValidation.values.email;
+      const password = formValidation.values.password;
+
+      // Importamos los usuarios mock para verificar credenciales
+      import('../../admin/services/pipelineRoleUsers').then(({ mockRoleUsers }) => {
+        const user = mockRoleUsers.find((u) => u.email === email && u.password === password);
+
+        if (user) {
+          // Guardar información del usuario en localStorage
+          localStorage.setItem(
+            'user',
+            JSON.stringify({
+              id: user.id,
+              name: user.name,
+              email: user.email,
+              role: user.role,
+              token: user.token,
+            })
+          );
+
+          // Redirigir según el rol
+          if (user.role === 'admin' || user.role === 'superAdmin') {
+            window.location.href = '#/admin/dashboard';
+          } else {
+            onClose(); // Solo cerrar el modal para usuarios normales
+          }
+        } else {
+          console.log('Credenciales incorrectas');
+          // Aquí podrías mostrar un mensaje de error
+        }
+      });
     }
   };
 
@@ -251,6 +299,18 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
     }));
   };
 
+  // Handler para limpiar el contenido pegado en el campo de correo
+  const handleInputPaste = (fieldName: string) => (e: React.ClipboardEvent<HTMLInputElement>) => {
+    if (fieldName === 'email') {
+      e.preventDefault();
+      const pasted = e.clipboardData.getData('text/plain');
+      // Solo permite caracteres válidos de email (básico)
+      const clean = pasted.replace(/[^\w@.\-_+]/g, '');
+      formValidation.handleChange(fieldName, clean);
+    }
+    // Si quieres aplicar a todos los campos, elimina el if y usa solo el bloque
+  };
+
   if (!isOpen) return null;
 
   return (
@@ -275,6 +335,7 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
                       value={formValidation.values[field.name] || ''}
                       onChange={(e) => handleInputChange(field.name, e.target.value)}
                       onBlur={() => handleInputBlur(field.name)}
+                      onPaste={handleInputPaste(field.name)}
                       style={field.type === 'password' ? { paddingRight: '32px' } : {}}
                     />
                     {/* Icono para mostrar/ocultar contraseña */}
