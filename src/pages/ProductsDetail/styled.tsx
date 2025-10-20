@@ -72,6 +72,11 @@ export const ContainerSecondImage = styled.div`
         width: 230px;
     }
 `
+export const ImageSecondContainerButton =styled.button`
+    padding: 0;
+    border: none;
+    cursor: pointer;
+` 
 
 export const ImageSecondContainer = styled.div`
     width: 100px;
@@ -86,6 +91,7 @@ export const ImageSecond = styled.img`
     width: 100%;
     height: 100%;
     border-radius: 10px;
+    object-fit: cover;
 `
 
 //Detalles

@@ -6,10 +6,10 @@ type typeProduct = {
   id:number,
   name:string,
   price:string,
-  image:string,
+  image:ImageOption[],
   category:string,
   quotas:number,
-  color:string[],
+  color:object[],
 
 }//ARRRAY PARA LOS COLORES
 
@@ -17,6 +17,12 @@ type typeProps ={
   product:typeProduct,
   show:boolean,
 }
+
+type ImageOption = {
+    color: string;
+    // Esto asume que 'imageRender' es un ARREGLO de strings (URLs)
+    imageRender: string[]; 
+};
 
 
 
@@ -44,7 +50,7 @@ function Product({product,show}:typeProps) {
                     <ProductImage>
                   <CardMedia
                   component="img"
-                  image={product.image}// ensure this is .image, not .url
+                  image={product.image[0].imageRender[0]}// ensure this is .image, not .url
                   alt={product.name} 
                   sx={{ height: { xs: 350, sm:450, md: 620 }, objectFit: 'cover' }}
                   

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { featuredProducts } from "../Products/mockData";
-import { BlockColor, Brands, BrandsText, ButtonSpecial, ColorText, Container, ContainerBlockColor, ContainerBrands, ContainerButton, ContainerDetail, ContainerFeature, ContainerImage, ContainerPrice, ContainerSecondImage, ContainerSize, ContainerStars, DetailText, ImageFirst, ImageFirstContainer, ImageSecond, ImageSecondContainer, MethodPayText, NumberSize, PriceText, ShareText, SizeNumbers, Stars, TextSize } from "./styled";
+import { BlockColor, Brands, BrandsText, ButtonSpecial, ColorText, Container, ContainerBlockColor, ContainerBrands, ContainerButton, ContainerDetail, ContainerFeature, ContainerImage, ContainerPrice, ContainerSecondImage, ContainerSize, ContainerStars, DetailText, ImageFirst, ImageFirstContainer, ImageSecond, ImageSecondContainer, ImageSecondContainerButton, MethodPayText, NumberSize, PriceText, ShareText, SizeNumbers, Stars, TextSize } from "./styled";
 
  type RouteParams =  {
         id?: string; // useParams siempre devuelve un string o undefined
@@ -9,23 +9,40 @@ import { BlockColor, Brands, BrandsText, ButtonSpecial, ColorText, Container, Co
 
 function ProductsDetail() {
     const { id } = useParams<RouteParams>();
-    const [color,setColor] = useState("");
+    const [colorSelect,setColorSelect] = useState(0);
+    const [selectImage,setSelectImage] = useState(0)
     
     const data = featuredProducts.find((item)=>item.id == Number(id));
 
-    const colorClothes = () =>{
+    const colorClothes = (colorName:string) =>{
+        console.log(data?.image)
+        const newData  = data?.image.findIndex((item)=>item.color == colorName) ?? -1;
+        if(newData != -1){
+            setColorSelect(newData)
+        }
         
     }
+    const handleClickImage = (index:number) =>{
+        setSelectImage(index)
+    }
+
+    
     
   return (
     <div>
         <Container>
             <ContainerImage>
-                <ImageFirstContainer><ImageFirst src={data?.image}/></ImageFirstContainer>
+                <ImageFirstContainer><ImageFirst src={data?.image[colorSelect].imageRender[selectImage]}/></ImageFirstContainer>
                 <ContainerSecondImage>
-                    <ImageSecondContainer><ImageSecond src={data?.image}/></ImageSecondContainer>
-                <ImageSecondContainer><ImageSecond src={data?.image}/></ImageSecondContainer>
-                <ImageSecondContainer><ImageSecond src={data?.image}/></ImageSecondContainer>
+                    {data?.image[colorSelect].imageRender.map((item,index)=>(
+                        <ImageSecondContainerButton key={index} onClick={()=>handleClickImage(index)}>
+                            <ImageSecondContainer>
+                                <ImageSecond src={item}/>
+                            </ImageSecondContainer>
+                        </ImageSecondContainerButton>
+                        
+                    ))}
+                    
                 
                 </ContainerSecondImage>
                 
@@ -54,7 +71,7 @@ function ProductsDetail() {
                     <ContainerBlockColor>
                         {data?.color.map((item)=>(
 
-                            <BlockColor onClick={()=>colorClothes()} colorType={item}>
+                            <BlockColor onClick={()=>colorClothes(item.name)} colorType={item.color}>
                                 
                             </BlockColor>
                         ))}
@@ -66,8 +83,8 @@ function ProductsDetail() {
                     <TextSize>talle:</TextSize>
                     <SizeNumbers>
                         {
-                            data?.size.map((item)=>(
-                                <NumberSize>{item}</NumberSize>
+                            data?.size.map((item,index)=>(
+                                <NumberSize key={index}>{item}</NumberSize>
                             ))
                         }
                         <NumberSize>20</NumberSize><NumberSize>40</NumberSize><NumberSize>50</NumberSize>

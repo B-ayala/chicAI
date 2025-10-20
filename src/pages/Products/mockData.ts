@@ -39,64 +39,111 @@ export const featuredProducts = [
     id: 1,
     name: 'Chaqueta Denim Clásica',
     price: '$89.99',
-    image: camisa, // was url: camisa
+    image:[
+      {
+      color:"red",
+      imageRender:[camisa], // was url: camisa
+    }
+    ]
+    , 
+    
     category: 'Chaquetas',
     quotas:3,
-    color:["#ee1d1d","#0c0d77","#000000"],
+    color:[{color:"#ee1d1d",name:"red"},{color:"#0c0d77",name:"blue"},{color:"#000000",name:"black"}],
     size:["20","30","40","60","65","70","43","80"],
   },
   {
     id: 2,
     name: 'saco jean',
     price: '$129.99',
-    image: primavera, // was url: camisaRoja
+    image:[
+      {
+      color:"red",
+      imageRender:[primavera], // was url: camisaRoja
+    }, 
+    ],
+    
     category: 'Vestidos',
     quotas:6,
-    color:["#ee1d1d","#0c0d77","#000000"],
+    color:[{color:"#ee1d1d",name:"red"},{color:"#0c0d77",name:"blue"},{color:"#000000",name:"black"}],
     size:["20","30","40","60","65","80"],
   },
   {
     id: 3,
     name: 'Camisola bordo',
     price: '$159.99',
-    image: camisaRosa, // was url: camisaRosa
+    image: [
+      {
+      color:"red",
+      imageRender:[camisaRosa]
+    } 
+    ]
+    
+    
+    , // was url: camisaRosa
     category: 'Calzado',
     quotas:3,
-    color:["#ee1d1d","#0c0d77","#000000"],
+    color:[{color:"#ee1d1d",name:"red"},{color:"#0c0d77",name:"blue"},{color:"#000000",name:"black"}],
     size:["60","65","70","43","80"],
   },
   {
     id: 4,
     name: 'Camisa Formal Blanca',
     price: '$69.99',
-    image:
-      imagesMap['crisp-white-formal-shirt-folded-neatly.jpg'] ||
-      '/crisp-white-formal-shirt-folded-neatly.jpg',
+    image: [
+      {color:"red",imageRender:[imagesMap['crisp-white-formal-shirt-folded-neatly.jpg'] ||
+      '/crisp-white-formal-shirt-folded-neatly.jpg',imagesMap['elegant-woman-in-modern-casual-wear-standing-in-mi.jpg'] ||
+      '/elegant-woman-in-modern-casual-wear-standing-in-mi.jpg']},
+      {color:"blue",imageRender:[imagesMap["stylish-man-in-contemporary-streetwear-against-urb.jpg"]||'/stylish-man-in-contemporary-streetwear-against-urb.jpg',imagesMap["modern-white-sneakers-product-shot.jpg"]||"/modern-white-sneakers-product-shot.jpg"]}
+    ]
+      ,
     category: 'Camisas',
     quotas:4,
-    color:["#ee1d1d","#0c0d77","#000000"],
+    color:[{color:"#ee1d1d",name:"red"},{color:"#0c0d77",name:"blue"},{color:"#000000",name:"black"}],
     size:["20","30","40","60","65","70","43","80"],
   },
   {
     id: 5,
     name: 'Pantalón Casual',
     price: '$79.99',
-    image: imagesMap['casual-khaki-pants-laid-flat.jpg'] || '/casual-khaki-pants-laid-flat.jpg',
+    image: [
+      {
+        color:"red",imageRender:[imagesMap['casual-khaki-pants-laid-flat.jpg'] || '/casual-khaki-pants-laid-flat.jpg',imagesMap['stylish-man-in-contemporary-streetwear-against-urb.jpg'] ||
+      '/stylish-man-in-contemporary-streetwear-against-urb.jpg']
+      },
+      {
+        color:"blue",imageRender:[imagesMap['stylish-man-in-contemporary-streetwear-against-urb.jpg'] || '/stylish-man-in-contemporary-streetwear-against-urb.jpg',imagesMap['stylish-man-in-contemporary-streetwear-against-urb.jpg'] ||
+      '/stylish-man-in-contemporary-streetwear-against-urb.jpg']
+      }
+    ],
     category: 'Pantalones',
     quotas:6,
-    color:["#ee1d1d","#0c0d77","#000000"],
+    color:[{color:"#ee1d1d",name:"red"},{color:"#0c0d77",name:"blue"},{color:"#000000",name:"black"}],
     size:["20","30","40","60"],
   },
   {
     id: 6,
     name: 'Bolso de Cuero',
     price: '$199.99',
-    image:
-      imagesMap['luxury-leather-handbag-on-marble-surface.jpg'] ||
-      '/luxury-leather-handbag-on-marble-surface.jpg',
+    image:[
+      {
+         color:"red",
+      imageRender:[imagesMap['luxury-leather-handbag-on-marble-surface.jpg'] ||
+      '/luxury-leather-handbag-on-marble-surface.jpg',imagesMap['classic-denim-jacket-on-white-background.jpg'] ||
+      '/classic-denim-jacket-on-white-background.jpg']
+      },
+      {
+        color:"blue",
+        imageRender:[imagesMap['elegant-floral-dress-on-hanger.jpg'] ||
+      '/elegant-floral-dress-on-hanger.jpg',imagesMap['classic-denim-jacket-on-white-background.jpg'] ||
+      '/classic-denim-jacket-on-white-background.jpg']
+      }
+     
+    ]
+      ,
     category: 'Accesorios',
     quotas:2,
-    color:["#ee1d1d","#0c0d77","#000000"],
+    color:[{color:"#ee1d1d",name:"red"},{color:"#0c0d77",name:"blue"},{color:"#000000",name:"black"}],
     size:["20","30","40","60","65","70","43","80"],
   },
 ];
