@@ -1,13 +1,17 @@
 import { Route, Routes } from 'react-router-dom';
+import AdminNotifications from '../admin/components/notifications/AdminNotifications';
 import Customer from '../admin/pages/customers/customer';
 import Dashboard from '../admin/pages/dashboard/dashboard';
-import ProtectedRoute from './ProtectedRoute';
-import Products from '../admin/pages/products/products';
 import Invoices from '../admin/pages/invoices/invoinces';
+import Products from '../admin/pages/products/products';
+import ProtectedRoute from './ProtectedRoute';
 
 const AdminRouter: React.FC = () => {
+  const adminId = localStorage.getItem('adminId') || 'admin';
+
   return (
     <>
+      <AdminNotifications adminId={adminId} />
       <Routes>
         <Route element={<ProtectedRoute isAdmin />}>
           <Route path="dashboard" element={<Dashboard />} />
