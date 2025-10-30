@@ -10,6 +10,13 @@ export const breakpoints = {
 interface propFeature{
     colorType:string,
     
+    
+}
+interface propSize{
+    
+    styleSelect:string,
+    size:string|number,
+    
 }
 
 export const Container = styled.div`
@@ -76,6 +83,10 @@ export const ImageSecondContainerButton =styled.button`
     padding: 0;
     border: none;
     cursor: pointer;
+    transition: opacity .4s;
+    &:hover{
+        opacity: .5;
+    }
 ` 
 
 export const ImageSecondContainer = styled.div`
@@ -180,8 +191,9 @@ export const BlockColor = styled.button<propFeature>`
     background-color: ${props=>props.colorType};
     border-radius: 3px;
     border:none;
-    
+    transition: opacity .3s;
     cursor: pointer;
+
     &:hover{
         opacity: 0.7;
     };
@@ -194,7 +206,7 @@ export const ContainerSize = styled.div`
     display: flex;
     flex-direction: column;
     gap: 5px;
-    
+    /*height: 100px;*/
 `
 export const TextSize = styled.p`
     font-size: 1.1rem;
@@ -212,17 +224,44 @@ export const SizeNumbers = styled.div`
         
     }
 `
-export const NumberSize = styled.div`
+export const NumberSize = styled.div<propSize>`
     border: 1px solid #000000;
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
     font-weight: 500;
+    background-color: ${props=>props.styleSelect==props.size?"#bbb8b8":"#fff"};
+    transition: background-color .3s;
     &:hover{
-        opacity: 0.9;
+        
         background-color: #bbb8b8;
+    };
+    animation: animationTraslate .3s linear both;
+
+    @keyframes animationTraslate {
+        from{
+            transform: translate(-70px);
+        }
+        to{
+            transform: translate(0);
+        }
     }
 `
+export const ContainerLookGuideSize = styled.div`
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+   
+    
+`
+export const LookGuideSizeIcon = styled.div`
+    font-size: 1.2rem;
+`
+export const LookGuideSizeText = styled.p`
+    font-size: 1.0rem;
+     margin: 0;
+`
+
 
 export const ContainerButton = styled.div`
     max-width:600px;

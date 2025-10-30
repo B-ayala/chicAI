@@ -1,13 +1,16 @@
 import { Container, Typography } from '@mui/material';
+import { useState } from 'react';
 import Product from '../../components/Product/Product';
-import { featuredProducts } from '../Products/mockData';
+import { carouselImages, featuredProducts } from '../Products/mockData';
 import { ProductsGrid } from '../Products/styled';
 import { HomeCarousel } from './components/HomeCarousel';
 
+
 export default function Home() {
+  const [currentSlide, setCurrentSlide] =useState(0);  
   return (
     <div>
-      <HomeCarousel />
+      <HomeCarousel imageRender={carouselImages} currentSlide={currentSlide} setCurrentSlide={setCurrentSlide} renderBoolean={true} widthImageXs='100' widthImageSm='100' widthImageMd='100'/>
       {/* Productos destacados en el Home */}
       <Container maxWidth={false}  sx={{ py: 8 }}>
         <Typography

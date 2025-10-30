@@ -1,14 +1,27 @@
 import { ArrowBackIos, ArrowForwardIos } from '@mui/icons-material';
 import { Box, Button, IconButton, Typography } from '@mui/material';
-import { useEffect, useState } from 'react';
+import { Dispatch, SetStateAction, useEffect } from 'react';
 import { carouselImages } from '../../Products/mockData';
 
-export const HomeCarousel = () => {
-  const [currentSlide, setCurrentSlide] = useState(0);
+  type SetNumber = Dispatch<SetStateAction<number>>;
 
+  type propsCarrusel= {
+  imageRender:string[]|object[]|undefined,
+  currentSlide: number,
+  setCurrentSlide:SetNumber,
+  renderBoolean:boolean,
+  widthImageXs:string,
+  widthImageSm:string,
+  widthImageMd:string,
+}
+
+export const HomeCarousel = ({imageRender,currentSlide,setCurrentSlide,renderBoolean,widthImageXs,widthImageSm,widthImageMd}:propsCarrusel) => {
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % carouselImages.length);
+      if(renderBoolean){
+        setCurrentSlide((prev) => (prev + 1) % carouselImages.length);
+      }
+      
     }, 7000);
     return () => clearInterval(timer);
   }, []);
@@ -21,12 +34,15 @@ export const HomeCarousel = () => {
     setCurrentSlide((prev) => (prev - 1 + carouselImages.length) % carouselImages.length);
   };
 
+
+
   return (
+    
     <Box
       sx={{
         position: 'relative',
-        height: { xs: '60vh', sm: '70vh', md: '89vh' },
-        width: '100vw',
+        height: { xs: '60vh', sm: '70vh', md: '89vh' }, 
+        width: {xs:`${widthImageXs}vw`,sm:`${widthImageSm}vw`,md:`${widthImageMd}vw`},
         maxWidth: '100%',
         overflow: 'hidden',
         boxShadow: { xs: 'none', md: 4 },
@@ -34,8 +50,10 @@ export const HomeCarousel = () => {
       role="region"
       aria-label="Carrusel de productos"
     >
-      {carouselImages.map((image, index) => (
+      {imageRender && imageRender.map((image:any, index) => (
+        
         <Box
+          
           key={index}
           sx={{
             position: 'absolute',
@@ -46,7 +64,7 @@ export const HomeCarousel = () => {
             opacity: currentSlide === index ? 1 : 0,
             zIndex: currentSlide === index ? 2 : 1,
             transition: 'opacity 1s cubic-bezier(0.4,0,0.2,1)',
-            backgroundImage: `url(${image.url})`,
+            backgroundImage: `url(${renderBoolean ? image.url:image})`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             display: 'flex',
@@ -54,7 +72,10 @@ export const HomeCarousel = () => {
             justifyContent: 'center',
           }}
         >
-          <Box
+
+            {
+              renderBoolean&&
+              <Box
             sx={{
               width: '100%',
               height: '100%',
@@ -65,7 +86,8 @@ export const HomeCarousel = () => {
               justifyContent: { xs: 'center', md: 'flex-start' },
               px: { xs: 2, md: 8 },
             }}
-          >
+          > 
+            
             <Box
               sx={{
                 color: 'white',
@@ -141,6 +163,8 @@ export const HomeCarousel = () => {
               </Button>
             </Box>
           </Box>
+            }
+          
         </Box>
       ))}
 
