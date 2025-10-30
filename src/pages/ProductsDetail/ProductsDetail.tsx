@@ -15,7 +15,8 @@ function ProductsDetail() {
     const [currentSlide, setCurrentSlide] = useState(0);
     const [sizeDetail, setSizeDetail] = useState(5);
     const [selectSize,setSelectSize] = useState("");
-    const [modalOpen,setModalOpen] = useState(false); 
+    const [modalOpen,setModalOpen] = useState(false);
+     
 
     const data = featuredProducts.find((item)=>item.id == Number(id));
 
