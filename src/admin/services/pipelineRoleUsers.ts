@@ -31,14 +31,14 @@ export const mockRoleUsers: RoleUser[] = [
   {
     id: '2',
     name: 'Administrador',
-    email: 'admin@chicai.com',
+    email: 'brian@gmail.com',
     role: 'admin',
     createdAt: '2023-10-15T09:00:00Z',
     lastLogin: '2024-06-02T12:45:00Z',
     isActive: true,
     token: 'jwt_token_admin1',
     refreshToken: 'refresh_token_admin1',
-    password: 'admin123', // mock password
+    password: 'brian123', // mock password
   },
   {
     id: '4',

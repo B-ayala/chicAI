@@ -111,7 +111,7 @@ export default function Dashboard() {
     },
   ];
 
-  type RecommendationType = "high" | "medium" | "low";
+  type RecommendationType = 'high' | 'medium' | 'low';
   interface Recommendation {
     title: string;
     description: string;
